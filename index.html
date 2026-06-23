@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>给普通小孩的志愿填报指南 · 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+    body { font-family: 'Noto Sans SC', sans-serif; }
+    .fade-in { animation: fadeIn 0.4s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .option-card { transition: all 0.2s ease; }
+    .option-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    .md-content h1 { font-size: 1.8rem; font-weight: 700; margin: 1.5rem 0 1rem; color: #0f172a; }
+    .md-content h2 { font-size: 1.4rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.25rem; }
+    .md-content h3 { font-size: 1.15rem; font-weight: 600; margin: 1rem 0 0.5rem; color: #334155; }
+    .md-content p { margin-bottom: 0.75rem; line-height: 1.75; }
+    .md-content ul, .md-content ol { margin-left: 1.25rem; margin-bottom: 0.75rem; }
+    .md-content ul { list-style-type: disc; }
+    .md-content ol { list-style-type: decimal; }
+    .md-content li { margin-bottom: 0.35rem; }
+    .md-content a { color: #4f46e5; text-decoration: underline; word-break: break-all; }
+    .md-content blockquote { border-left: 4px solid #cbd5e1; padding-left: 1rem; color: #475569; font-style: italic; margin: 1rem 0; }
+    .md-content code { background: #f1f5f9; padding: 0.15rem 0.35rem; border-radius: 0.25rem; font-size: 0.9em; color: #0f172a; }
+    .md-content pre { background: #f8fafc; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; }
+    .md-content pre code { background: transparent; padding: 0; }
+    .md-content table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+    .md-content th, .md-content td { border: 1px solid #e2e8f0; padding: 0.5rem 0.75rem; text-align: left; }
+    .md-content th { background: #f8fafc; font-weight: 600; }
+    .md-content hr { margin: 1.5rem 0; border: 0; border-top: 1px solid #e2e8f0; }
+    .tab-active { background-color: white; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .tab-inactive { background-color: transparent; color: #475569; }
+    .tab-inactive:hover { color: #0f172a; }
+    .float-btn { position: fixed; z-index: 50; border-radius: 9999px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    #toc-panel { bottom: 5.5rem; right: 1rem; max-height: 60vh; overflow-y: auto; }
+    #toc-toggle { bottom: 1.5rem; right: 1rem; }
+    #back-to-top { bottom: 1.5rem; right: 5rem; }
+    @media (min-width: 768px) {
+      #toc-panel { right: 2rem; max-width: 320px; }
+      #toc-toggle { right: 2rem; }
+      #back-to-top { right: 6.5rem; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <div class="max-w-3xl mx-auto px-4 py-8 md:py-12">
+
+    <!-- Header -->
+    <header class="mb-6 text-center">
+      <h1 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">🎓 给普通小孩的志愿填报指南（2026）</h1>
+      <p class="text-slate-600 mb-4">基于小宇宙「给普通小孩的志愿填报指南」2026 高考特别企划的 37 期播客整理</p>
+      <nav class="inline-flex bg-slate-100 rounded-xl p-1" aria-label="切换模式">
+        <button id="tab-quiz" class="px-4 py-2 rounded-lg text-sm font-medium tab-active transition" onclick="switchTab('quiz')">答题测方向</button>
+        <button id="tab-ref" class="px-4 py-2 rounded-lg text-sm font-medium tab-inactive transition" onclick="switchTab('ref')">专业结果速查</button>
+        <button id="tab-article" class="px-4 py-2 rounded-lg text-sm font-medium tab-inactive transition" onclick="switchTab('article')">内容总结</button>
+        <button id="tab-about" class="px-4 py-2 rounded-lg text-sm font-medium tab-inactive transition" onclick="switchTab('about')">关于</button>
+      </nav>
+    </header>
+
+    
+    <div class="mb-6 p-4 bg-amber-50 border border-amber-100 rounded-xl text-sm text-amber-800">
+      <strong>⚠️ 2026 参考风险提示：</strong>本页面所有文字转写与整理均由大模型生成，可能存在偏差；内容仅供 2026 年高考志愿填报参考，不能替代官方招生政策与一手从业者访谈。
+    </div>
+
+
+    <div id="quiz-panel">
+      <!-- Progress Bar -->
+      <div id="progress-container" class="mb-6">
+        <div class="flex justify-between text-xs text-slate-500 mb-1">
+          <span>进度</span>
+          <span id="progress-text">1 / 10</span>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-2">
+          <div id="progress-bar" class="bg-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 10%"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <main id="quiz-card" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 fade-in">
+        <h2 id="question-title" class="text-xl md:text-2xl font-semibold mb-6 leading-relaxed"></h2>
+        <div id="options-container" class="space-y-3"></div>
+        <div id="navigation" class="mt-8 flex justify-between hidden">
+          <button id="prev-btn" class="px-5 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 transition">← 上一题</button>
+        </div>
+      </main>
+
+      <!-- Results Card -->
+      <main id="result-card" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 fade-in">
+        <h2 class="text-2xl font-bold mb-2 text-slate-900">你的方向建议</h2>
+        <p class="text-slate-600 mb-6">以下按匹配度排序，点击卡片可展开详情。</p>
+        <div id="results-list" class="space-y-4"></div>
+
+        <div class="mt-8 p-4 bg-amber-50 border border-amber-100 rounded-xl text-sm text-amber-800">
+          <strong>⚠️ 重要提醒：</strong>本推荐仅作初步筛选，不能替代一对一咨询、真实从业者访谈和官方招生/职位数据。建议到“内容总结”和“专业结果速查”标签继续深入了解。
+        </div>
+
+        <div class="mt-6 text-center">
+          <button id="restart-btn" class="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition shadow-md">重新测试</button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Article Panel -->
+    <main id="article-panel" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 fade-in relative">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-bold text-slate-900">专业核心结论与播客详解</h2>
+        <span class="text-xs text-slate-500">2026 年高考志愿填报参考</span>
+      </div>
+      <div id="md-rendered" class="md-content max-w-none text-slate-700"></div>
+    </main>
+
+    <!-- Quick Reference Panel -->
+    <main id="ref-panel" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 fade-in">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">专业结果速查</h2>
+      <p class="text-sm text-slate-600 mb-4">以下是所有可推荐的方向，无需答题即可直接查阅。</p>
+      <div class="space-y-4">
+        
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🏛️</span>
+            <h3 class="text-lg font-bold text-slate-900">考公 / 体制内</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">稳定、可预期，适合能接受规则、文字与沟通能力较强的学生。对体制路线而言，专业代码比学校层级更重要，但工商管理≠好考公，需精确看职位表。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>法学、汉语言文学、计算机、财会、工商管理、经济学、统计学、公共管理</div>
+            <div><strong>风险提示：</strong>热门考公专业分数被推高；工商管理等大类专业内部差异极大；考上后专业与岗位常不匹配（64% 受访者认为一般或不匹配）；晋升/调动不完全由个人决定；基层岗位可能在水库/乡镇/执法一线。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>报志愿前先下载近 2–3 年国考/省考职位表，精确到专业代码</li><li>大学期间争取入党、一年以上学生干部、相关证书（教资/会计/法律职业资格）</li><li>不要把考公当作唯一退路，保留市场化就业能力</li><li>选岗不仅看名称，还要看地点、服务年限、是否下基层、待遇天花板</li><li>提前读《沧浪之水》，理解体制内生存逻辑</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a2f98e143a22a695583fb8a" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Vol.19 如果你希望“至少考公是个退路”</a> · 体制内｜考公人的聊天局</li><li><a href="https://www.xiaoyuzhoufm.com/episode/684f67134abe6e29cb4ab4e1" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Vol.132 “最”好考公的专业是工商管理</a> · 体制内｜小职员们的聊天局</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🚔</span>
+            <h3 class="text-lg font-bold text-slate-900">警校 / 公安类</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">近似包分配，公安联考通过率极高，但管理严格、工作辛苦、岗位分配受组织决定。对身体、纪律性、心理承受力有硬要求。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>公安学类、公安技术类</div>
+            <div><strong>风险提示：</strong>必须通过公安联考，极少数会退出警察序列；半军事化管理自由度低；工作强度大、值班多、风险高；岗位分配“哪里来哪里去”，多数回生源地；专业与岗位不一定对口。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>提前确认体检、体能、政审要求（体测四项过三项即可）</li><li>女生名额少、分数线更高，入警后相对轻松但性价比需单独评估</li><li>警校实行半军事化管理，评估孩子是否能适应全年警服、统一作息</li><li>新警一般先到基层派出所锻炼 1–2 年</li><li>工作以后专业不一定对口，实际工作能力与特长更重要</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a27f67934bdac55b506d7ab" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">152.考警校、当民警是一种怎样的体验</a> · 曳尾于涂</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">📚</span>
+            <h3 class="text-lg font-bold text-slate-900">公费师范生 / 教师</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">免学费、有编制、服务期长，适合喜欢孩子、能接受基层或指定地区工作的人。但 18 岁决定一辈子当老师容易后悔，成就感高度依赖学校环境。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>汉语言文学（师范）、数学与应用数学（师范）、英语（师范）、物理学（师范）等</div>
+            <div><strong>风险提示：</strong>服务期内调动受限；违约成本高；成就感高度依赖学校/学生/家长/地方财政；职业天花板较低；同一批进校教师流动性不低，不适应者可能抑郁辞职。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>看清服务期年限、违约条款、生源地/定向地限制</li><li>去学校实地感受目标地区的学生质量与管理风格</li><li>若目标是考公/转行，提前了解服务期内报考政策</li><li>教师成就感滞后且依赖环境，边疆/基层与内地差异巨大</li><li>若并非真心喜欢教育，只是图稳定，请慎重</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/68044fe21f1db84a565df901" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">EP01 公费师范生｜18岁选择一辈子的教师职业</a> · 老师好！吗？</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">💹</span>
+            <h3 class="text-lg font-bold text-slate-900">金融</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">学校、城市、实习经历比本科专业更重要；本科不一定非要学金融，数学/理工科背景反而更稳妥。高薪光环在褪色，初级信息岗受 AI 冲击最大。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>金融学、经济学、会计学、统计学、数学与应用数学、计算机</div>
+            <div><strong>风险提示：</strong>高薪光环减弱，IPO 与一二级市场处低潮；二代/关系户比例上升，普通家庭孩子竞争压力大；初级岗位受 AI 冲击大；收入波动大、工作强度高。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>优先选择一线城市和名校</li><li>本科优先考虑数学、统计、计算机、理工科，研究生或工作中再补金融</li><li>尽早实习：银行、券商、基金、企业财务都体验一下</li><li>破除影视作品滤镜，了解银行客户经理、保险销售等基础岗位才是吸纳主体</li><li>想做投资/研究前台，先去产业工作几年往往更有优势</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a25d5587444b5722234fbc5" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">169.如果你18岁，正考虑未来把金融当职业</a> · 起朱楼宴宾客</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a257debb30e1571aea22bdf" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">vol.53 普通小孩的四年金融答卷</a> · 辞不达意BeyondWords</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">💻</span>
+            <h3 class="text-lg font-bold text-slate-900">计算机 / AI</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">已从时代红利变成通用技能。只会基础编码的红利正在消失，但“用代码解决问题、做出产品”的能力仍然值钱。城市与产业集聚非常重要。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>计算机科学与技术、软件工程、人工智能、数据科学、信息安全</div>
+            <div><strong>风险提示：</strong>基础编码岗位快速贬值；行业竞争激烈、大厂门槛高、加班多、35 岁焦虑真实存在；计算机/软件工程专业已过热饱和；学校课程可能滞后。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>优先去产业集聚的一线城市（北京、上海、深圳、杭州）</li><li>尽早做项目、实习、参加开源社区</li><li>用 AI 工具做一个小产品挂出去，比简历写“精通 Python”更有说服力</li><li>重视产品思维 + 技术实现，而不只是算法</li><li>确认孩子是“喜欢生产技术”而不是“喜欢消费技术产品”</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a2fd7d943a22a6955842cbd" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">毕业季｜邪修人生！Vibe Coding时代</a> · 人民公园说AI</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a25937c7444b5722234f11b" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">高考是闭卷，但具身智能行业可以开卷</a> · 脑放电波</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🤖</span>
+            <h3 class="text-lg font-bold text-slate-900">新工科 / 具身智能 / 硬科技</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">硬科技招聘更看重机器人竞赛经历与解决真实问题的能力，学校/GPA 权重下降。行业极早期，机会与泡沫并存，不要急着以“具身智能”专业本身作为目标。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>机械工程、自动化、电子信息、电气工程、机器人工程、集成电路</div>
+            <div><strong>风险提示：</strong>行业尚未到“GPT-1 时刻”，泡沫可能破裂；创业小公司风险高；大厂/国企/航天等领域仍有学历门槛；需要极强的主动性、动手能力和跨学科整合能力。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>参加 RoboMaster/RoboCup/RoboCon 等竞赛，比赛经历可能比 GPA 更有说服力</li><li>优先选择产业资源强的城市：北京、上海、深圳、杭州</li><li>本科选机械/自动化/电子/计算机等大类即可，不要追逐名称</li><li>尽早进实验室、做项目、打比赛，构建正反馈</li><li>确认孩子是真的从小热爱动手，而不是被“风口”吸引</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a25937c7444b5722234f11b" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">高考是闭卷，但具身智能行业可以开卷</a> · 脑放电波</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🩺</span>
+            <h3 class="text-lg font-bold text-slate-900">医学</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">培养周期极长（5+3+3+规培，30 岁才刚独立做医生），前十年收入与投入严重不匹配，科室差异大到“像两种人生”。需要热爱、身体、情绪稳定与终身学习意愿。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>临床医学、口腔医学、麻醉学、医学影像学、医学检验、护理学</div>
+            <div><strong>风险提示：</strong>前 10–20 年收入与投入严重不匹配；规培期间月薪可能仅 3000 元；工作强度大、夜班多、身体消耗大；医患关系与行政事务消耗精力；科室选择常受调剂影响；女医生还面临性别与心理压力。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>去医院找真实医生聊一天，重点问科室差异、作息、收入曲线、转行路径</li><li>区分临床/口腔/麻醉/影像/检验/护理/法医/公共卫生，它们是不同人生</li><li>若目标是高收入/快钱，不建议学医</li><li>若家庭无法承担长期低回报，需谨慎</li><li>医学训练可迁移，不喜欢临床不一定失败</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a30ae7e43a22a695584744f" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">027.高考志愿季:如果回到 18 岁，我们还会学医吗？</a> · 下班医生</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a3053783c67992448622ab2" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">VOL.71-2026年还要报考临床医学吗</a> · 去病三分糖</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a229571b30e1571aea130c1" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">EP11 到底要不要学医</a> · 狒话多说</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🌱</span>
+            <h3 class="text-lg font-bold text-slate-900">生物 / 农学</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">“天坑”本质是本科教育与就业市场的错配。纯生物/传统农学本科就业面窄、起薪偏低；交叉方向（生物信息、智慧农业、农业工程、碳核算）更有就业弹性。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>生物科学、生物技术、生物信息、生物统计、农学、植物保护、智慧农业</div>
+            <div><strong>风险提示：</strong>本科直接就业面窄，硕士几乎是起步；学术路线竞争激烈、待遇偏低；企业研发岗位集中在少数城市和头部公司；农学工作环境艰苦、社会认知偏见强；“21 世纪是生物的世纪”指产业周期，个人回报不一定同步。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>优先考虑交叉方向：生物信息、生物统计、合成生物、智慧农业、农业工程、碳核算</li><li>尽早进实验室/田间/企业实习，验证真实节奏</li><li>读到博士不是唯一解：国外生物博士主流去企业，农学硕士+实践经验性价比可能更高</li><li>高中生物好不是报考理由，要区分“喜欢知识”和“喜欢做实验/长期研究”</li><li>农学选校关注科技小院、曲周实验站等实践平台</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6678bf0cb6a8412729cce913" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">E.66 生物这个“天坑”专业，我们跳进来12年了</a> · 万物生长FM</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a2e422e43a22a6955836a11" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">高考冷门专业？年轻人为什么还要学农</a> · 食日谈</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">⚖️</span>
+            <h3 class="text-lg font-bold text-slate-900">法学</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">考公大户、专业壁垒高，法考是硬门槛。真实律师工作远没有影视剧光鲜，情绪劳动强度高。本科非法学 + 法考 + 实习也能入行，复合背景在商事/涉外/知产领域有优势。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>法学、知识产权、监狱学</div>
+            <div><strong>风险提示：</strong>法考客观题 2024 年通过率仅约 13.8%；律师行业“二八效应”明显，年轻律师收入低、案源压力大；工作强度大、出差加班多；AI 改变合同审查/检索等基础工作；学校出身影响市场化求职。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>尽早了解法考通过率与备考难度，把法考作为底线目标</li><li>多去法院、检察院、律所、企业法务实习</li><li>法学 + 外语/金融/知识产权/理工科，复合背景更有竞争力</li><li>评估自己的情绪劳动耐受度</li><li>如果目标是体制，确认岗位对法学本科还是法律硕士有要求</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a2fcb9d43a22a695584251a" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Ep.26 如果能重来，我还要报法学</a> · 半山腰 Halfway There</li><li><a href="https://www.xiaoyuzhoufm.com/episode/685288752a38b4d9794ae99d" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">#55 劝人学法，千刀万剐？</a> · 机智的律师生活</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🔭</span>
+            <h3 class="text-lg font-bold text-slate-900">理学 / 数学 / 天文</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">兴趣驱动、转行灵活；数学是金融/计算机/AI 的底层语言，也是抵御偏见、提出好问题的思维工具。天文学浪漫但科研日常是数据处理与编程。短期经济效益不明显，家庭要有耐心。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>数学与应用数学、物理学、天文学、统计学</div>
+            <div><strong>风险提示：</strong>纯学术岗位少，博士几乎是标配；需要长期海外交流/博士后，生活不稳定；不够热爱容易被漫长科研周期消磨；不是每个人都适合抽象思维；短期经济效益不明显。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>确认自己喜欢抽象思维而非只是“数学成绩好”或“喜欢星空照片”</li><li>理学本科走应用方向建议辅修计算机或金融</li><li>天文学可走平铺路径：科普、仪器、数据、教育</li><li>天文学对英语要求很高，教材/论文/会议以英文为主</li><li>多参加数学建模、天文社团、数据分析项目验证兴趣</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6718aef80d2f24f2893ddd40" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">EP03：对话天体物理学PhD</a> · 梁州令</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6933f72e4ef12f9fe936fbaf" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">数学到底有什么用</a> · 果壳时间</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">⚙️</span>
+            <h3 class="text-lg font-bold text-slate-900">工学</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">重实践与产业对接；同一专业名在不同学校差异巨大，工程思维强调解决真实场景问题。新工科是国家重点方向，但部分学校跟风设专业，课程质量存疑。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>化学工程、材料科学与工程、电子信息、电气工程、微电子、集成电路</div>
+            <div><strong>风险提示：</strong>传统工科面临周期波动和转型压力；部分专业工作环境艰苦（工地/工厂/野外）；学科划分越来越细，产业需要跨学科能力；人工智能等专业在不同学校定位差异巨大。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>查清目标学校该专业的产业资源、校企合作、培养方案</li><li>化学 ≠ 化工：前者重原理，后者重放大与工程</li><li>新工科看课程表是否有真正交叉内容，还是只改名</li><li>工科就业很看项目经历，多做竞赛、实习、毕业设计</li><li>关注院校学科布局变化：电院分拆、复旦新工科等</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/68372db231215eb5063c01d3" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">又是一年高考志愿季，聊聊交大电院的分拆</a> · G大成长论</li><li><a href="https://www.xiaoyuzhoufm.com/episode/662e27270b4af2d8e97e9840" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">【18】化工博士：学工科是个创造和解决问题的过程</a> · 我是女博士</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">📖</span>
+            <h3 class="text-lg font-bold text-slate-900">中文 / 外语 / 历史 / 哲学</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">培养阅读、写作、批判性思维、跨文化理解等底层能力，在 AI 时代有其独特价值。但本科直接就业面宽、对口少、起薪普遍不高，需要兴趣驱动 + 主动积累作品 + 跨学科技能。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>汉语言文学、英语/小语种、历史学、哲学</div>
+            <div><strong>风险提示：</strong>本科就业率整体偏低；市场化起薪不高；社会偏见强（“文科无用论”）；基础翻译/套路文本岗位被 AI 冲击；学术路线漫长、tenure 压力大。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>不要误以为中文系培养作家、英文系只做翻译、历史只能做学术、哲学只能当老师</li><li>大学期间大量写作、运营账号、做内容项目、参加实习</li><li>重视跨学科能力：中文+数据分析、外语+法律/金融、历史+商业分析、哲学+科技伦理</li><li>把考公、教师、媒体、出版、文创作为现实出口提前规划</li><li>把 AI 当工具，独特观察、叙事和表达是护城河</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/66722f1cb6a8412729bec316" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">023 笨、穷，毕业即失业，日渐边缘的中文系</a> · 以读攻读</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6867a60360f8f77d40d7fdc3" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">vol.6 文科生别慌！985中文系老师说高考志愿大胆报</a> · 其乐容容</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a2ab5ea028e84948f291612" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">27 中文系、英文系，还能行吗？</a> · 怪东西Weird History</li><li><a href="https://www.xiaoyuzhoufm.com/episode/690b6e03af4fc00da74fe698" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">北大毕业10年：文科转商科</a> · 东方之声</li><li><a href="https://www.xiaoyuzhoufm.com/episode/65cac9e00847349e0c2e5350" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">对话历史学博士生：宇宙的尽头究竟在哪儿</a> · 职场无界</li><li><a href="https://www.xiaoyuzhoufm.com/episode/68cebf4aa56ca3e0c469fed1" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">5 访谈｜一位哲学博士的心路历程</a> · 政治哲学圆桌</li></ul></div>
+          </div>
+        </div>
+        
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">🧭</span>
+            <h3 class="text-lg font-bold text-slate-900">先探索 / 未定方向</h3>
+          </div>
+          <p class="text-sm text-slate-600 mb-3">如果完全没有方向，优先选择城市好、转专业灵活、通识教育强的平台，主动利用高考后的 20 多天和大学四年探索自己。主动性比一次选对专业更重要。</p>
+          <div class="text-sm text-slate-700 space-y-2">
+            <div><strong>推荐专业：</strong>通识教育、大类招生、转专业政策宽松的院校</div>
+            <div><strong>风险提示：</strong>大类招生可能分流受限；转专业有成绩/名额门槛；被动等待会错失窗口期；不要把“版本答案”当成最优解。</div>
+            <div><strong>行动建议：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li>优先城市：一线/新一线城市的实习、讲座、校友资源能帮你更快建立体感</li><li>优先学校平台：转专业政策、大类分流规则、双学位/辅修机会</li><li>高考后 20 多天做自我探索：写下“绝对不能接受的生活”和“最想过的生活”</li><li>大一、大二多尝试：辅修、双学位、实习、社团、科研、志愿活动</li><li>区分“喜欢消费某样东西”和“喜欢生产某样东西”</li></ul></div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1"><li><a href="https://www.xiaoyuzhoufm.com/episode/6a2f9b6843a22a695583fdb0" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Vol.168 志愿填报是一次思维模式的突围</a> · 钱婧老师的会客厅</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a27aef47444b5722235de88" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">054.高考志愿填报指南</a> · 家长先疯</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a2bdaeb43a22a695582a8d9" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">高考特别节目|大部分专业根本学不到什么东西</a> · 旺仔信箱</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6a27c76b7444b5722235f236" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Vol.107｜童年着迷的事情，拥抱了长大后的自己</a> · 说说罢了</li><li><a href="https://www.xiaoyuzhoufm.com/episode/6916d6a8cbba038b428301aa" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">E212 对话叶晓阳：好的系统会保护普通人</a> · 知行小酒馆</li><li><a href="https://www.xiaoyuzhoufm.com/episode/687713c160f8f77d40bf6ef8" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">#74 人，是可以去到任何专业的</a> · 徐徐的</li></ul></div>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+
+    <!-- About Panel -->
+    <main id="about-panel" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 fade-in">
+      <h2 class="text-xl font-bold text-slate-900 mb-4">关于本页面</h2>
+      
+      <div class="space-y-6 text-sm text-slate-700">
+        <section>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">算法说明</h3>
+          <p class="mb-2">“答题测方向”并不是算命，而是一个基于规则的加权打分器：</p>
+          <ol class="list-decimal list-inside space-y-1 ml-1">
+            <li>10 道题共覆盖 13 个方向（考公、警校、师范、金融、计算机、新工科、医学、生物/农学、法学、理学、工学、人文、探索）。</li>
+            <li>每道题的每个选项都带有一张“分数表”，选中后会把对应分数累加到相关方向。</li>
+            <li>答完最后一题，系统汇总每个方向的总分，取分数最高的前 4 个（且分数大于 0）展示为推荐。</li>
+            <li>针对你的具体选择，系统会追加个性化提醒：例如身体较弱却推荐医学/警校、经济压力大却推荐长周期方向等。</li>
+            <li>如果最高分低于 4 分，说明方向感不强，系统会自动补一条“先探索/未定方向”作为兜底。</li>
+          </ol>
+          <p class="mt-2 text-slate-500">因此，它只能做初步筛选，不能替代你和孩子去了解真实课程、做职业访谈、查官方招生/职位数据。</p>
+        </section>
+
+        <section>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">数据来源与模型说明</h3>
+          <ul class="list-disc list-inside space-y-1 ml-1">
+            <li>全部内容来自小宇宙「给普通小孩的志愿填报指南」2026 高考特别企划的 37 期播客。</li>
+            <li>文字整理与结构编排由 <a href="https://www.kimi.com/code" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">Kimi Code</a>（<a href="https://kimi.com/resources/kimi-k2-7-code" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">K2.7 Code</a>）辅助完成。</li>
+            <li>语音转写使用 <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">OpenAI Whisper</a> 的 MLX 本地加速版本，具体模型为 <a href="https://huggingface.co/mlx-community/whisper-large-v3-mlx" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">mlx-community/whisper-large-v3-mlx</a>。</li>
+          </ul>
+        </section>
+
+        <section class="p-4 bg-amber-50 border border-amber-100 rounded-xl">
+          <h3 class="text-lg font-bold text-amber-900 mb-2">⚠️ 重要风险提示</h3>
+          <p class="text-amber-800">播客语音转写与后续文字整理均依赖大模型输出，可能存在同音错字、断句偏差、理解误差或信息遗漏。本页面所有内容仅供 2026 年高考志愿填报参考，不能替代官方招生章程、专业培养方案、职位表以及一手从业者访谈。请以教育部门、高校、招考机构发布的官方信息为准。</p>
+        </section>
+
+        <section>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">2026 时效性说明</h3>
+          <p>本页面基于 2026 年高考季的小宇宙企划内容整理。政策、行业趋势、就业市场每年都会变化，建议后续年份的考生和家长以当年的最新信息和一手访谈为准。</p>
+        </section>
+
+        <section>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">原企划入口</h3>
+          <p>想听完整播客，请访问：<a href="https://collection.xiaoyuzhoufm.com/gaokao2026" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">小宇宙「给普通小孩的志愿填报指南」2026 企划页</a>。</p>
+        </section>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-center text-xs text-slate-400 space-y-1">
+      <p>数据来源：<a href="https://collection.xiaoyuzhoufm.com/gaokao2026" target="_blank" rel="noopener noreferrer" class="underline hover:text-slate-600">小宇宙「给普通小孩的志愿填报指南」2026 企划</a> · 本地 Whisper 转写稿整理</p>
+      <p>文字整理：Kimi Code（K2.7 Code）· 语音转写：mlx-community/whisper-large-v3-mlx</p>
+    </footer>
+  </div>
+
+  <!-- Floating TOC toggle and back-to-top (only meaningful for article panel) -->
+  <button id="toc-toggle" class="float-btn hidden bg-indigo-600 text-white p-3 hover:bg-indigo-700 transition" title="目录" aria-label="打开目录" onclick="toggleToc()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+  </button>
+  <div id="toc-panel" class="float-btn hidden bg-white border border-slate-200 rounded-2xl shadow-lg p-4 w-64">
+    <div class="flex items-center justify-between mb-2">
+      <strong class="text-sm text-slate-700">目录</strong>
+      <button onclick="toggleToc()" class="text-slate-400 hover:text-slate-600" aria-label="关闭目录">✕</button>
+    </div>
+    <ul id="toc-list" class="text-sm space-y-1 max-h-96 overflow-y-auto"></ul>
+  </div>
+  <button id="back-to-top" class="float-btn hidden bg-slate-700 text-white p-3 hover:bg-slate-800 transition" title="回到顶部" aria-label="回到顶部" onclick="backToTop()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" /></svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script type="text/markdown" id="md-source">
+# 给普通小孩的志愿填报指南：专业核心结论与播客详解
+
+> 本文以小宇宙「给普通小孩的志愿填报指南」高考特别企划 37 期播客的 Whisper 本地转写稿为基础，由 Kimi Code（K2.7 Code）辅助整理，面向 2026 年高考志愿填报。
+> 
+> **目标**：以专业/职业方向为出发点，把嘉宾原话、真实案例与数据穿插进每个方向的判断中，最终为每个方向凝练出「核心结论」，方便考生和家长快速抓住重点，再按需回听原播客。
+> 
+> **使用建议**：先读每个方向的「核心结论」做初筛；若方向基本吻合，再细读「播客里的真实声音」和「行动建议」；最后点击「参考播客」回听完整内容。
+> 
+> **⚠️ 注意**：文字转写与整理均依赖大模型输出，可能存在偏差，内容仅供 2026 年高考志愿填报参考，具体录取政策、招生计划和岗位要求请以官方信息为准。
+
+---
+
+## 目录
+
+1. [通用决策框架：志愿填报不是“不亏分”](#1-通用决策框架志愿填报不是不亏分)
+2. [考公 / 考编](#2-考公--考编)
+3. [警校 / 公安类](#3-警校--公安类)
+4. [公费师范生 / 教师](#4-公费师范生--教师)
+5. [金融](#5-金融)
+6. [计算机 / AI](#6-计算机--ai)
+7. [新工科 / 具身智能 / 硬科技](#7-新工科--具身智能--硬科技)
+8. [医学](#8-医学)
+9. [生物 / 农学](#9-生物--农学)
+10. [法学](#10-法学)
+11. [理学 / 数学 / 天文](#11-理学--数学--天文)
+12. [工学](#12-工学)
+13. [中文 / 外语 / 历史 / 哲学](#13-中文--外语--历史--哲学)
+14. [先探索 / 未定方向](#14-先探索--未定方向)
+15. [附录：37 期节目清单与链接](#15-附录37-期节目清单与链接)
+
+---
+
+## 1. 通用决策框架：志愿填报不是“不亏分”
+
+### 核心结论
+
+对普通小孩而言，填志愿最大的敌人不是分数，而是**信息不对称和自我认知空白**。不要再用“不浪费一分”作为唯一目标，而要把志愿当成一次“全生命周期规划”：从分数 → 专业 → 学校 → 产业 → 就业 → 生活方式，串成一条线来看。18 岁很难一次性选对，但你可以用 20 多天窗口期，把“不知道自己不知道”变成“至少知道该问什么”。
+
+### 关键提醒
+
+- **只看专业名称，不看真实课程与就业口径**，是踩坑第一定律。招生目录上的几个字，和家长想象往往差很远。
+- **用“热门/冷门”代替“适不适合”**会出问题：计算机已经过热饱和，土木也不是只有房地产。
+- **不要把考公当退路**：到大四才发现专业不在招录表上，只能挤“三不限”。
+- **城市、实习、校友网络**对大多数专业都是放大器。对非顶尖的普通孩子，钱婧老师甚至建议“城市 > 专业”。
+- **父母的认知上限，就是孩子未来发展的上限**。志愿填报也是家庭关系从“管”到“陪”的转折点。
+
+### 播客里的真实声音
+
+- 优志愿创始人耿忠诚在节目中提醒：现在高考志愿已从“分数选大学”升级为“分数 → 专业 → 大学 → 产业 → 就业”的全生命周期规划；信息差永远存在，而且会因为认知差越来越大。
+- 钱婧老师在答疑中反复强调：对普通分数段的孩子，“好城市 + 一般专业”往往优于“差城市 + 好专业”；人能内向，但不能不勇敢；AI 时代，社会化的重要性反而上升。
+- 教育经济学家叶晓阳说：一个好的系统会保护不懂规则的普通人，但高考志愿填报恰恰相反；信息不对称不是“找不到信息”，而是“不知道自己不知道什么”。
+- 人类学者袁长庚指出：越来越多年轻人问的不是“考研还是考公”，而是“人生到底应该怎么过”；不要停止想象其他可能性。
+
+### 行动建议
+
+1. 高考结束后，用 20 多天做自我探索：MBTI/霍兰德/盖洛普只做参考，更重要的是写下“绝对不能接受的生活”和“最想过的生活”。
+2. 用阳光高考网、学校就业质量报告、近 3 年国考/省考职位表做事实核查。
+3. 做 1–3 次职业访谈：找在读学长/从业者，问“你的一天具体做什么”“最后悔什么”“再来一次怎么选”。
+4. 警惕“新瓶装旧酒”的交叉学科/新工科/数字经济：拆分课程表，看是课程重组还是真有机会。
+5. 普通家庭孩子若完全没方向，可先用“版本答案”兜底：理科优先计算机/电子信息/电气；文科优先师范/公安/能进体制的专业。但不要把兜底当成最优解。
+
+### 参考播客
+
+- [Vol.168 志愿填报是一次思维模式的突围｜高考志愿填报Q&A](https://www.xiaoyuzhoufm.com/episode/6a2f9b6843a22a695583fdb0) · 钱婧老师的会客厅
+- [054.高考志愿填报指南：从不亏分的填报策略，到拍脑袋的专业选择，普通家庭离选对专业到底有多远？](https://www.xiaoyuzhoufm.com/episode/6a27aef47444b5722235de88) · 家长先疯
+- [Ep.44 18岁填的志愿，30岁的简历分水岭：聊聊"第一学历"这道职场暗题](https://www.xiaoyuzhoufm.com/episode/6a2922a4dbccffcfa9c6b7d0) · 人在井底
+- [普通小孩的志愿填报：先知道自己为什么普通](https://www.xiaoyuzhoufm.com/episode/6a2aaa440a34cf8ce5a776da) · G大成长论
+- [E212 对话叶晓阳：好的系统会保护普通人](https://www.xiaoyuzhoufm.com/episode/6916d6a8cbba038b428301aa) · 知行小酒馆
+- [23.对话袁长庚：让议题停留在视线之中](https://www.xiaoyuzhoufm.com/episode/696c8bec109824f9e11b4d67) · 西西弗高速
+
+---
+
+## 2. 考公 / 考编
+
+### 核心结论
+
+考公不是专业，但某些专业能显著扩大职位表。**对明确走体制路线的考生，专业代码的重要性远高于学校层级**——985 冷门专业可能不如双非对口专业能报的岗位多。但“工商管理最好考公”是统计陷阱：岗位数量多≠岗位质量好，管理大类内部差异极大。考公应该从填志愿就开始规划，而不是大四临时抱佛脚。
+
+### 对口方向与岗位
+
+- **招录大户**：法学、汉语言文学、计算机、财会、工商管理、经济学、统计学、公共管理。
+- **理工类岗位在发达地区增加**：长三角、珠三角近年电子、计算机、应用经济学岗位占比上升。
+- **尽量避免“三不限”**：竞争激烈，往往上百人抢一个岗。
+
+### 优势与风险
+
+**优势**：职业稳定性高、福利体系完整；对普通家庭、追求确定性的孩子是“进可攻退可守”的选项；体制内专业对口度比市场化行业更重要。
+
+**风险**：
+- 热门考公专业在高考时分数被推高，可能出现“为考公而读，四年并不喜欢”。
+- 专业代码必须精确到二级学科。工商管理可报的多，但旅游管理、酒店管理、工程管理可能无岗；法学类内部（法学、知识产权、监狱学、政治学）代码差一位资格复审就可能被刷。
+- 考上不是终点：64% 体制内受访者认为专业与岗位“一般”或“不匹配”，72% 认为专业与薪资无关。
+- 晋升、调动、地域分配不完全由个人决定；基层岗位可能在水库、乡镇、执法一线。
+
+### 适合人群
+
+追求稳定、能接受规则与层级、文字/沟通/综合能力较强、家庭资源有限希望尽快经济独立的考生。
+
+### 播客里的真实声音
+
+- 得意老师（大厂签约规划师）在《考工人的聊天局》中明确说：对体制路线考生，“考工最重要的其实是专业，不是学校。985、211、双非，只要专业代码符合要求，报考资格上就是相同的。”
+- 南南老师（公考培训十年）提醒：同一个大类下面，细分专业可报岗位差距巨大；他曾遇到政治学专业考生误把自己归为“法学大类”，资格复审被刷，成绩作废。
+- 家琪老师（华图 CIO 助理）统计了 2022–2024 年 43 万个岗位后指出：工商管理岗位数量第一，但实际培训中发现它不见得匹配到好岗位；“招录基数大不代表岗位质量好”。
+- 高高老师（985 生涯教育副教授）强调：真正稳定的是“持续输出价值的能力”，没有专业能让你又稳定又赚钱一辈子。
+
+### 行动建议
+
+1. 报志愿前下载近 2–3 年国考/省考职位表，精确到专业代码，看目标专业是否有岗、岗多不多。
+2. 大学核心动作：入党（大一就写申请）、一年以上学生干部、相关证书（教资/会计/法律职业资格）、基层项目（三支一扶/大学生士兵）。
+3. 不要把四年全部押注在考公上：考研热已经降温，未来公考招录数量也可能回落。
+4. 选岗时不仅看“省直/市直/乡镇”，还要看办公地点、服务年限、是否下基层、加班强度、待遇天花板。
+5. 读完《沧浪之水》：进入体制前，先理解“很多事情不由你决定”。
+
+### 参考播客
+
+- [Vol.19 如果你希望“至少考公是个退路”，该怎么填高考专业？](https://www.xiaoyuzhoufm.com/episode/6a2f98e143a22a695583fb8a) · 体制内丨考公人的聊天局
+- [Vol.132 “最”好考公的专业是工商管理，你学吗？](https://www.xiaoyuzhoufm.com/episode/684f67134abe6e29cb4ab4e1) · 体制内 | 小职员们的聊天局
+
+---
+
+## 3. 警校 / 公安类
+
+### 核心结论
+
+警校公安类专业是“近似包分配”的高确定性路径：公安联考通过率约 90%，浙江警院入警率高达 97–98%。但高确定性的代价是**半军事化管理、高强度体能训练、工作辛苦、岗位分配由组织决定**。它不是“稳定”的万能解，而是对纪律性、身体素质、心理承受力有硬要求的特殊通道。
+
+### 代表职业
+
+派出所民警、交警、刑警、网警、特警、铁路/海关/边检/民航等行业公安。
+
+### 优势与风险
+
+**优势**：入警通道稳定、就业确定性高于普通本科、社会地位与职业荣誉感较强、对普通家庭孩子是“靠努力+体能+政审”就能走通的上升路径。
+
+**风险**：
+- 工作强度大、值班多、风险高；对身体和心理素质要求高。
+- 警校管理严格：全年穿警服、剪短发、统一作息，自由度远低于普通大学。
+- 女生录取名额少、分数线远高于男生；入警后相对男民警轻松，但性价比需单独评估。
+- 公安联考有淘汰率，不是 100% 入警；岗位分配“哪里来哪里去”，多数回生源地。
+- 专业与岗位不一定对口：学网络安全的可能去派出所，学刑侦的也可能被分到办公室写材料。
+
+### 适合人群
+
+身体素质好、纪律性强、愿意服务公共安全、能接受基层一线工作的孩子。
+
+### 播客里的真实声音
+
+- 35 年从警经历的老公安在节目中说：警院毕业绝大多数“哪里来哪里去”；女生录取名额相对男生少很多，分数线普遍高于男生；警院实行严格的警务化管理，不同于一般大学。
+- 他强调：工作以后不要再纠结大学专业，实际工作能力、情商、特长比专业重要得多。公安机关经常搞练兵比武，会 PPT/视频制作、普通话好等特长，可能被部门发现并借调。
+- 新警一般先到派出所锻炼 1–2 年，这半年是“社会大学”：群众工作、笔录、与不同人打交道、处理突发事件。
+
+### 行动建议
+
+1. 提前确认体检、体能、政审要求，尤其视力、身高、体测四项过三项即可。
+2. 不是“包分配”：必须通过公安联考，极少数不学习或特殊原因会退出警察序列。
+3. 评估孩子是否能接受半军事化管理和基层派出所的辛苦，不要只看“稳定”二字。
+4. 女生若分数够高，要权衡是否值得用同样分数去读普通名校。
+5. 保留服务期满后的职业可能性，不要把人生锁死在公安系统。
+
+### 参考播客
+
+- [152.【加更】考警校、当民警是一种怎样的体验？｜老警察讲故事](https://www.xiaoyuzhoufm.com/episode/6a27f67934bdac55b506d7ab) · 曳尾于涂 | 罪案纪实
+
+---
+
+## 4. 公费师范生 / 教师
+
+### 核心结论
+
+公费师范生“免学费、有编制、服务期长”，对经济条件一般、愿意当老师的孩子是“热爱+稳定”的结合。但 18 岁就决定一辈子当老师容易后悔，**服务期约束、生源地/定向地限制、学校环境与学生质量对成就感的巨大影响**，都是填报志愿前必须认真评估的隐性成本。
+
+### 专业画像
+
+国家/地方公费师范生免学费、住宿费，给予生活补助，毕业后按协议到指定地区任教通常 6 年。普通师范专业则没有服务期，但就业需要自己考编。
+
+### 代表职业
+
+中小学教师、教育管理岗位；服务期满后可转向培训机构、出版、教育科技等领域。
+
+### 优势与风险
+
+**优势**：经济负担小、教师编制稳定、寒暑假、社会认可度较高；如果本身就喜欢和孩子打交道、喜欢传播知识，这是很好的结合。
+
+**风险**：
+- 服务期内调动受限，可能要去生源地或基层学校。
+- 18 岁决定是否一辈子当老师，容易后悔；服务期违约成本高。
+- 教师成就感高度依赖学校环境、学生质量、家长支持度和地方财政状况。边疆/基层与内地城市差异巨大。
+- 职业天花板较低：评职称到副高后想当中层、校长，需要资源与人脉。
+- 同一批进校教师可能几年内走掉一半，不适应者会抑郁、辞职。
+
+### 适合人群
+
+性格耐心、表达清晰、对教育有热情、家庭经济条件有限需要降低读大学成本、能接受服务期约束的孩子。
+
+### 播客里的真实声音
+
+- 海鲜（新疆高中语文教师，从教 8 年）坦言：后悔也不后悔，最大的问题是“感受不到职场的成就感”。他认为学生换个人教也一样，真正影响学生的是家庭环境和个人人生经历，老师最多讲知识层面。
+- 他说：“越落后的地区，实际上对老师的尊重就会越差。”他当年选师范的动机是“不想干农活”“姐夫说当老师好”，并非热爱教育。
+- 服务期内考公、考研、调动通常需要学校/教育局同意，各地政策不一；服务满 6 年后离开的极少，因为年龄已大、已成家，变动成本极高。
+- 同一批进校十几位老师，现在只剩五六人；离开原因包括去内地发展、嫁到内地、抑郁辞职。
+
+### 行动建议
+
+1. 看清服务期年限、违约条款、定向地/生源地限制，不要只看“免学费”。
+2. 去学校实地感受：若可能，找一所目标地区的中小学，观察学生质量、管理风格、教师状态。
+3. 如果目标是考公或转行，要提前了解服务期内是否允许报考、需不需要学校同意证明。
+4. 教师职业成就感来自长期反馈，日常可能被边缘化（如语文在理科班），要做好心理准备。
+5. 若孩子并非真心喜欢教育，只是图稳定，请慎重：教师是最容易“职业倦怠”的职业之一。
+
+### 参考播客
+
+- [EP01 公费师范生|18岁选择一辈子的教师职业，你后悔吗?](https://www.xiaoyuzhoufm.com/episode/68044fe21f1db84a565df901) · 老师好！吗？
+
+---
+
+## 5. 金融
+
+### 核心结论
+
+金融行业内部差异极大，但**学校品牌、城市、实习经历比本科专业更重要**。本科不一定非要学金融，数学、理工科甚至先实业后金融，都是更稳妥的路径。金融高薪光环正在褪色，普通家庭的“硬闯”难度加大；初级信息处理岗位受 AI 冲击最大，而资深前台仍靠人脉、判断和周期经验吃饭。
+
+### 代表职业
+
+- **银行**：管培生、客户经理、信贷审批、风控、交易员。
+- **证券/投行**：投行分析师、行业研究员、机构销售、固收交易员。
+- **基金/资管**：研究员、基金经理助理、量化研究员、产品经理。
+- **保险**：精算、核保核赔、保险资管、渠道管理。
+- **咨询/审计**：咨询顾问、审计员、财务尽调顾问。
+- **互联网金融**：金融产品经理、风控策略、数据分析师。
+- **金融监管**：央行、证监会、金融监管总局、交易所。
+
+### 优势与风险
+
+**优势**：职业路径清晰、“越老越吃香”、收入上限高、行业通用性强。
+
+**风险**：
+- “清北复交之下无金融”虽夸张，但学校名气和实习经历确实非常关键。
+- 高薪光环减弱，IPO、一二级市场、金融创新均处低潮；二代/关系户比例上升，普通家庭孩子竞争压力大。
+- 初级岗位（研报整理、数据收集、PPT、承做材料）受 AI 冲击最大。
+- “三年不开张，开张吃三年”，收入波动大，抗压能力要求高。
+- 工作强度极高：卖方研究实习生可能晚上 11 点接到通知，第二天早上 8 点要交出 slides。
+
+### 适合人群
+
+数学和逻辑基础较好、对商业/宏观/数据敏感、能接受高强度工作/长期加班/持续考证实习、家庭有一定资源或愿意从基层销售起步的孩子。
+
+### 播客里的真实声音
+
+- 大卫翁（前资管从业者 15 年+）给出的排序：**基础学科 > 理工科 > 金融经济的专门学科 > 其他学科**。理由：基础学科内容不易被技术颠覆；金融经济是经验学科，研究生或工作中再学完全来得及。
+- 他说：“比起学什么专业，金融行业一直更看重的是学校的名号和实习的经历，所以学校和城市更加重要。”
+- 三位金融本科生（唐宋、嘉可、小杨）在《辞不达意》中提到：一级市场更卡学历和资源，“清北复交之下无金融”在顶尖岗位是真实存在的；但二级市场研究岗位相对更看重研究能力。
+- 小杨提醒：“银行客户经理这个职业，真的不是离我们特别远的职业；可能学金融的百分之七八十的人，最后都要面对去做这些基础工作。”
+- 大卫翁还建议：想做投资/研究前台的人，先去产业工作几年往往比本科毕业直接进金融更好——产业知识难以通过 AI 快速补齐。
+
+### 行动建议
+
+1. 优先选择一线城市和名校；如果分数受限，宁可去好城市的一般专业，也不要去差城市的好专业。
+2. 本科优先考虑数学、统计学、计算机、理工科；研究生或工作中再补金融知识。
+3. 尽早实习：银行、券商、基金、企业财务都体验一下，破除影视作品滤镜。
+4. 对“海归优先”祛魅：除极少数顶尖海外项目外，普通海归在金融业已不占优势。
+5. 不要把金融想象成全然的精英与体面：银行客户经理、保险销售等基础岗位才是吸纳金融毕业生的主体。
+
+### 参考播客
+
+- [169.如果你18岁，正考虑未来把金融当职业｜高考季特别策划](https://www.xiaoyuzhoufm.com/episode/6a25d5587444b5722234fbc5) · 起朱楼宴宾客
+- [vol.53 普通小孩的四年金融答卷：学金融“值”吗？](https://www.xiaoyuzhoufm.com/episode/6a257debb30e1571aea22bdf) · 辞不达意BeyondWords
+
+---
+
+## 6. 计算机 / AI
+
+### 核心结论
+
+计算机已从“时代红利”变成“通用技能”。**只会基础编码的红利正在消失，但“用代码解决问题、做出产品”的能力仍然值钱**。如果孩子从小对技术有热情，城市好、产业前沿的学校仍值得选；如果只是被家长按头填报或只看热门，四年会非常痛苦。AI 让入门变“开卷”，但也拉大了会用者和不会用者的差距。
+
+### 代表职业
+
+软件开发、算法工程师、AI 产品经理、独立开发者、全栈工程师、金融科技/游戏/物联网/企业服务技术岗。
+
+### 优势与风险
+
+**优势**：起薪高、岗位多、跨行业通用性强、学习路径清晰、资源丰富。
+
+**风险**：
+- 基础编码岗位受 AI 冲击最大，“只会写代码”的红利在消失。
+- 行业竞争极其激烈，大厂门槛高、加班多、35 岁焦虑真实存在。
+- 如果完全不喜欢技术，只是被家长按头填报，大学四年会非常痛苦。
+- 计算机/软件工程专业开设数量极大，已出现“极度过热和饱和”。
+- 学校课程可能滞后，真正值钱的能力来自项目、实习、开源社区。
+
+### 适合人群
+
+逻辑思维好、对技术有好奇心、愿意持续学习、不排斥自学和动手做项目、对“用技术创造东西”有热情的孩子。
+
+### 播客里的真实声音
+
+- 《人民公园说AI》主播直言：大学四年在哪过，比学什么专业重要至少一万倍；AI 能搬砖了，人更需要知道“我到底要建什么东西、怎么建”。
+- 何旭国（深度机智联合创始人）在《脑放电波》中表示：招聘时“学校是一方面，GPA 基本不看，研究生本科没区别”；但 RoboMaster、RoboCup、Robocon 等机器人比赛经历“绝对是加分项”。
+- 他还说：GPT 是 24 小时在线、永远耐心的老师，但缺少独立思考和判断力更麻烦；会用 AI 的人指数级成长，不会用的人更容易放弃。
+- 耿忠诚提醒：企业每天收到大量计算机简历，特色往往是“熟练 Python”，但稍微考一下就知道只是会写几行代码，缺乏解决真实问题的能力。
+
+### 行动建议
+
+1. 优先去产业集聚的一线城市（北京、上海、深圳、杭州）。
+2. 不要只盯着学校课程，尽早做项目、实习、参加开源社区；用 AI 工具做一个小产品挂出去，比简历上写“精通 Python”更有说服力。
+3. 重视“产品思维 + 技术实现”，而不仅是算法研究。
+4. 确认孩子是“喜欢生产技术”而不是“喜欢消费技术产品”。
+5. 如果学校层次一般，用竞赛/项目/实习弥补；如果完全无兴趣，不要硬报。
+
+### 参考播客
+
+- [毕业季｜邪修人生！Vibe Coding时代，选专业不如这3个人生开挂のSkill！](https://www.xiaoyuzhoufm.com/episode/6a2fd7d943a22a6955842cbd) · 人民公园说AI
+- [高考是闭卷，但具身智能行业可以开卷-和机器人“国家队”教练何旭国聊硬科技人才观-Vol99](https://www.xiaoyuzhoufm.com/episode/6a25937c7444b5722234f11b) · 脑放电波
+
+
+
+---
+
+## 7. 新工科 / 具身智能 / 硬科技
+
+### 核心结论
+
+“具身智能”不是本科专业，而是机械、电子、自动化、计算机、材料等学科的交叉领域。**硬科技创业公司招聘更看重机器人竞赛经历与解决真实问题的能力，学校/GPA 权重下降**。行业处于极早期，机会与泡沫并存，不要急着以“具身智能”专业本身作为志愿目标；本科选机械、自动化、电子、计算机等大类即可。
+
+### 代表职业
+
+机器人算法工程师、运动控制工程师、感知工程师、硬件产品经理、硬科技市场营销、RoboMaster/RoboCup 赛事教练、创客教育。
+
+### 优势与风险
+
+**优势**：行业处于早期、人才需求旺盛、薪资涨幅快；对“热爱+动手能力”的回报很高；机械/电子与软件工程毕业生的薪资差距已从约 30% 缩小到约 10%。
+
+**风险**：
+- 行业尚未到“GPT-1 时刻”，很多公司是炒概念，泡沫可能破裂。
+- 需要极强的自驱力、动手能力和跨学科整合能力。
+- 从传统机械/自动化转行过来的人很多，竞争不仅来自同专业。
+- 创业小公司风险高，大厂/国企/航天等领域仍有学历门槛。
+
+### 适合人群
+
+小时候喜欢拆东西、做模型、参加机器人社团；能接受“从动起来开始，再补短板”的工程思维；不介意从下游产业链（教育、赛事、硬件销售）切入的孩子。
+
+### 播客里的真实声音
+
+- 何旭国说：自己本科是北交大机电一体化/热能动力，并非机器人专业；真正走到行业前面的人，不是因为行业火了才转方向，而是“从小就喜欢这个东西”。
+- 他面试过深职院毕业生，发现团队里约 1/3 的优秀工程师来自这所“专科”学校，说明产业资源可以弥补学校牌子。
+- 他带高中生机器人国家队去美国比赛，一位女生两天拉到 5–6 万元服装赞助，靠的不是专业标签，而是解决问题能力、主动性和抗压能力。
+- 薪资差距缩小的数据：5 年前机械、电子被视为“很苦的行业”，现在与软件工程毕业生薪资差距只剩约 10%。
+
+### 行动建议
+
+1. 选学校时，看机器人战队成绩（RoboMaster、RoboCup）比看综合排名更实在。
+2. 尽早进实验室、做项目、打比赛，构建正反馈循环。
+3. GPA 不是硬门槛，但能否长期坚持、解决问题、带队拉赞助很重要。
+4. 优先选择产业资源强的城市：北京、上海、深圳、杭州。
+5. 不要追逐“具身智能”这个名称本身；本科打好机械/电子/计算机/自动化的基础更稳妥。
+
+### 参考播客
+
+- [高考是闭卷，但具身智能行业可以开卷-和机器人“国家队”教练何旭国聊硬科技人才观-Vol99](https://www.xiaoyuzhoufm.com/episode/6a25937c7444b5722234f11b) · 脑放电波
+
+---
+
+## 8. 医学
+
+### 核心结论
+
+医学是“长周期、高壁垒、强责任”的专业。**培养周期极长（5+3+3+规培，30 岁才刚独立做医生），前十年收入与投入严重不匹配，科室差异大到“像两种人生”**。如果对生命没有强烈兴趣、身体和心理韧劲不够、家庭无法度过漫长低回报期，不要轻易学医。AI 会改变影像、病理等辅助诊断，但临床决策和人文关怀短期内难以替代。
+
+### 代表职业
+
+临床医生（外科、内科、儿科、急诊、麻醉、影像、病理等）、口腔医生、整形医生、皮肤科医生、医学科研、公共卫生、医药企业医学事务。
+
+### 优势与风险
+
+**优势**：职业壁垒极高、社会需求稳定、越老越吃香；成就感强，能直接帮助他人；自己和家人生病时心里有底。
+
+**风险**：
+- 培养周期极长：5 年本科 + 3 年硕士/博士 + 3 年规培，才可能独立执业。
+- 前 10–20 年收入与投入严重不匹配；规培期间月薪可能只有 3000 元。
+- 工作强度大、夜班多、身体消耗大（胃病、腰突、静脉曲张、睡眠障碍常见）。
+- 医患关系、写病历、行政事务等琐碎消耗大量精力。
+- 科室选择决定人生：皮肤科可规律作息，急诊/外科/ICU 高负荷；且科室选择常受分数、调剂、就业影响。
+- 女医生还要面对性别天花板、婚育压力、心理健康风险。
+
+### 适合人群
+
+身体素质好、心理韧性强、能接受长周期回报、对“人”和“生命”有强烈兴趣、家庭能提供一定经济支持的孩子。
+
+### 播客里的真实声音
+
+- 方元（外科医生）说：18 岁的人做决定没有普通病，一腔热血就够了；但“40 岁之前，你没有任何生活之战”。
+- 大巴（外科医生）形容自己周六做两台手术，早 8:30 进手术室，晚上 9:30–10:00 才出来，腿都肿了，开车回家时困到“眼前发沉、直冒冷汗”。
+- 张薇（华山医院女外科医生）靠助学贷款读完大学，规培时月薪约 3000 元；她细算：本科 5 年 + 硕士 3 年 + 博士 3 年 + 规培 3 年，30 岁才“刚刚开始做医生”。
+- 张瑞说：神经内科老师能把定位定性分析得清清楚楚，最后告诉你没有特效药，信念崩塌；但外科一台手术下来，实实在在解决了一个病人的问题——这是神经内科和外科“两种人生”的缩影。
+- 多位医生提醒：如果你完全讨厌考试、讨厌规训和持续学习，学医要谨慎；情绪稳定非常重要，因为医生面对的是社会各个阶层、各种各样的人。
+
+### 行动建议
+
+1. 不要只看“临床医学”四个字，括号里的定向/八年制/本硕博意味着完全不同的路径。
+2. 去医院找真实医生聊一天，比听亲戚建议管用十倍；重点问科室差异、作息、收入曲线、转行路径。
+3. 区分临床、口腔、麻醉、影像、检验、护理、法医、公共卫生——它们是不同人生，别混为一谈。
+4. 若目标是高收入/快钱，不建议学医；若家庭无法承担长期低回报，需谨慎。
+5. 医学训练可迁移，转行去药企、器械、咨询、科研、医疗投资的人很多；不喜欢临床不一定失败。
+
+### 参考播客
+
+- [027.高考志愿季:如果回到 18 岁，我们还会学医吗？](https://www.xiaoyuzhoufm.com/episode/6a30ae7e43a22a695584744f) · 下班医生
+- [VOL.71-2026年还要报考临床医学吗？——华山医院甲乳外×肝胆外科医生对谈](https://www.xiaoyuzhoufm.com/episode/6a3053783c67992448622ab2) · 去病三分糖
+- [EP11 到底要不要学医？四位不同科室的医生是这么说的](https://www.xiaoyuzhoufm.com/episode/6a229571b30e1571aea130c1) · 狒话多说
+
+---
+
+## 9. 生物 / 农学
+
+### 核心结论
+
+生物和农学常被贴上“天坑”标签，但“天坑”本质不是专业本身，而是**本科教育与就业市场之间的错配**。纯生物/传统农学本科直接就业面窄、起薪偏低；但交叉方向（生物信息、生物统计、智慧农业、农业工程、碳核算）更有就业弹性。如果喜欢生命机制或土地系统、能接受长期投入和体力劳动，这两个专业依然可以走得很远。
+
+### 代表职业
+
+- **生物**：高校/科研院所研究员、生物医药企业研发、基因检测、合成生物、农业育种、环境保护、科普教育。
+- **农学**：农业科研院所、种子/农药/化肥企业、智慧农业公司、农业物联网、农业政策、乡村振兴、国际组织（FAO）、科技小院。
+
+### 优势与风险
+
+**优势**：与国家战略（粮食安全、乡村振兴、绿色低碳、生命健康）高度相关；科研训练扎实；交叉方向机会多；出国读博/走学术通道相对成熟。
+
+**风险**：
+- 本科直接就业面窄，硕士几乎是起步，博士常见。
+- 学术路线竞争激烈、待遇偏低、tenure 压力大。
+- 企业研发岗位集中在少数城市和头部公司，地域限制明显。
+- 农学工作环境艰苦：高温、泥地、臭气、暴雨、抢农时是常态；社会认知偏见强（“学农=种地”）。
+- “21 世纪是生物的世纪”更多指产业周期，个人回报不一定同步。
+
+### 适合人群
+
+对生命现象或土地/农业系统有强烈好奇心、愿意长期泡在实验室或田间、能接受读到硕士/博士、数理基础不能太差（现代生物学越来越依赖数据分析和编程）的孩子。
+
+### 播客里的真实声音
+
+- 《万物生长FM》三位生物从业者说：他们班级约 25–28 人，只有 1–2 人是主动报考动物科学，其余全是调剂；高中生物好 ≠ 适合学生物。
+- 也歌（病原生物学博士）说：“本科阶段其实学不到什么真正的生物学。你学会的是研究生物学的技术和方法，必须到硕士、博士阶段，你才能真正去学‘什么是生物学’。”
+- Ago 明确推荐：如果考虑就业，优先选**生物统计、生物信息**；“21 世纪是生物的世纪，但千万不要报纯生物。”
+- 《食日谈》李扬阳教授说：“农学并没有让我大富大贵，但让我每天活得很暖和、很踏实。”他同时提醒：选农学前先问自己，是否喜欢踏踏实实做实验、不偷懒、一步一个脚印研究具体问题。
+- 农大“堆肥八仙”案例：8 位女生在田里穿着雨靴站在粪山里翻堆，堆体高温时表面温度可达 70–80℃，味道像公共厕所——这是农学真实日常的一部分。
+
+### 行动建议
+
+1. 如果目标是就业，优先选择交叉方向：生物信息、生物统计、合成生物、智慧农业、农业工程、碳核算/生命周期评价。
+2. 本科阶段尽早进实验室/田间/企业实习，验证自己是否喜欢科研或农业的真实节奏。
+3. 读到博士不是唯一解：国外生物博士主流去向是企业；农学硕士+实践经验的性价比在某些场景下高于读博。
+4. 高中生物好不是报考理由；要区分“喜欢生物知识”和“喜欢做实验/长期研究”。
+5. 农学选校时关注科技小院、曲周实验站等实践平台，这些是比综合排名更实在的培养资源。
+
+### 参考播客
+
+- [E.66 生物这个“天坑”专业，我们跳进来12年了](https://www.xiaoyuzhoufm.com/episode/6678bf0cb6a8412729cce913) · 万物生长FM
+- [高考冷门专业？年轻人为什么还要学农 | Vol.69](https://www.xiaoyuzhoufm.com/episode/6a2e422e43a22a6955836a11) · 食日谈
+
+---
+
+## 10. 法学
+
+### 核心结论
+
+法学是“考公大户 + 专业壁垒高”的典型专业，但**法考是硬门槛，真实律师工作远没有影视剧光鲜**。适合逻辑清晰、表达能力强、能接受长期积累和情绪劳动的孩子。本科非法学 + 法考 + 实习也能入行，但学校出身和复合背景会显著影响市场化求职竞争力。
+
+### 代表职业
+
+律师（诉讼、刑事辩护、商事、知识产权等）、法官、检察官、公证员、企业法务/合规/风控、公务员（政法委、纪委监委、市场监管、税务等）、法学研究、国际组织、NGO。
+
+### 优势与风险
+
+**优势**：考公岗位多、职业路径清晰、法考后壁垒较高、训练逻辑思维/表达能力/证据意识，这些能力高度可迁移。
+
+**风险**：
+- 必须通过法律职业资格考试，客观题 2024 年通过率仅约 13.8%，主观题约 52.8%。
+- 律师行业“二八效应”明显，年轻律师收入低、案源压力大。
+- 工作强度大，诉讼律师经常出差、加班、面对冲突；情绪劳动强度高。
+- AI 已经在改变合同审查、法律检索等基础工作，低端岗位受压。
+- 学校出身影响显著，五院四系认可度较高。
+
+### 适合人群
+
+逻辑清晰、表达能力强、喜欢辩论和说理、对公平正义有执念、能忍受长期积累和客户压力、愿意从实习律师/助理做起的孩子。
+
+### 播客里的真实声音
+
+- 小黑律师（有欧洲人权法院/国际刑事法庭经历）说：法学不是单纯背法条，而是培养“法感”——理解规则背后的法理和制度逻辑。
+- 小龙律师本科工商管理、研究生工程管理，在银行/保险工作后自学通过司法考试转行；他的经历说明：复合背景在商事领域有优势，非法本也能入行。
+- 《机智的律师生活》主播提醒：如果赚大钱是几乎全部理想，法律行业并不是很好选择；做企业、金融经济肯定比法学来钱快。但“比较低风险、稳定地赚一些辛苦钱”，法律是不错的选择。
+- 节目还强调：AI 可以提升效率，但无法替代庭审、谈判、客户沟通中的动态人际互动；擅长换位思考、综合能力均衡的人更适合法学。
+
+### 行动建议
+
+1. 法考是底线，尽早了解通过率、备考难度，不要把它当成不可逾越的焦虑源。
+2. 大学期间多实习：律所、法院、检察院、企业法务都体验一下，破除影视剧滤镜。
+3. 法学 + 外语、法学 + 金融、法学 + 知识产权、法学 + 理工科，复合背景更有竞争力。
+4. 如果目标是体制，确认法院/检察院/行政执法等岗位对法学本科还是法律硕士有要求。
+5. 评估自己的情绪劳动耐受度：律师要同时面对合伙人、客户、对手、法官/检察官，多方压力是常态。
+
+### 参考播客
+
+- [Ep.26 如果能重来，我还要报法学！「高考志愿填报指南」](https://www.xiaoyuzhoufm.com/episode/6a2fcb9d43a22a695584251a) · 半山腰 Halfway There
+- [#55 劝人学法，千刀万剐？— 高考后该不该跳进法学这个“坑”](https://www.xiaoyuzhoufm.com/episode/685288752a38b4d9794ae99d) · 机智的律师生活
+
+---
+
+## 11. 理学 / 数学 / 天文
+
+### 核心结论
+
+理学是“基础学科”，不以直接就业为导向，而以训练思维和科研能力为核心。**数学是金融、计算机、AI 的底层语言，也是抵御偏见、提出好问题的思维工具**；天文学浪漫但科研日常是数据处理、编程、写论文。选择理学要区分“喜欢消费星空/解谜”和“喜欢生产知识”；家庭要有耐心，短期经济效益不明显。
+
+### 代表职业
+
+- **数学**：高校教师、量化金融、数据科学、机器学习工程师、算法工程师、密码学、精算、统计、商业分析。
+- **天文学**：高校/天文台研究员、天文科普、科学传播、航天遥感、数据科学、金融量化、天文仪器/望远镜工程。
+
+### 优势与风险
+
+**优势**：可迁移性极强；训练逻辑、抽象、建模能力，终身受益；数学背景在量化、算法、数据科学领域非常吃香；天文学产业链很长，下游（科普、仪器、数据）也能靠近天文梦。
+
+**风险**：
+- 纯学术岗位极少，就业面窄，博士几乎是标配。
+- 需要长期海外交流、博士后经历，生活不稳定。
+- 如果不够热爱，容易被漫长的科研周期消磨。
+- 不是每个人都适合抽象思维，强行学会很痛苦。
+- 天文学对英语要求很高，教材、论文、会议主要使用英文。
+
+### 适合人群
+
+喜欢抽象思维、逻辑推理、解决问题；愿意读研读博或本科阶段补充计算机/金融二专；对“数学是一种表达”或宇宙本身有持久热情的孩子。
+
+### 播客里的真实声音
+
+- 项舒扬（数学博士）说：数学是一个好奇心搭建起来的有趣的工程，不仅仅是公式；AI 可以算得很快，但数学最重要的是让我们想得更清楚、有思考的能力。
+- 她用谷神星失踪与高斯发现正态分布、二战飞机弹孔与幸存者偏差、贝叶斯定理与罕见病检测等案例说明：数学是抵御偏见、纠正直觉的工具。
+- 方和斐（天体物理学博士）提醒：网上色彩绚烂的星云照片不是肉眼所见，而是多波段数据合成；天文科研 80% 时间是写代码、处理数据。
+- 他还说：成为天体物理学家不一定要本科读天文，科研圈更看重长期能力与热情；高中生想报考天文，最该做的不是买望远镜，而是把物理、数学、英语学好。
+
+### 行动建议
+
+1. 理学本科如果走应用方向，建议辅修计算机或金融。
+2. 天文学可以走“行业下游”（科普、仪器、数据）曲线救国，不要只盯着学术岗位。
+3. 确认自己喜欢抽象思维而非只是“数学成绩好”或“喜欢星空照片”。
+4. 家庭要有心理准备：基础学科回报周期长，短期经济效益不明显。
+5. 多参加数学建模、天文社团、数据分析项目，尽早验证自己是否适合。
+
+### 参考播客
+
+- [EP03：对话天体物理学PhD：我在太阳系找铁饭碗](https://www.xiaoyuzhoufm.com/episode/6718aef80d2f24f2893ddd40) · 梁州令
+- [数学到底有什么用？这是我最喜欢的答案](https://www.xiaoyuzhoufm.com/episode/6933f72e4ef12f9fe936fbaf) · 果壳时间
+
+
+
+---
+
+## 12. 工学
+
+### 核心结论
+
+工科是“创造和解决问题”的学科，天然贴近产业。**同一专业名在不同学校差异巨大，工程思维强调把科学原理变成可运行的产品、流程和系统**。新工科（AI、芯片、新能源、智能制造）是国家重点方向，但部分学校“跟风设专业”，课程质量存疑。选择工科要查清目标学校该专业的产业资源、学院拆分和培养方案，不要只看综合排名。
+
+### 代表职业
+
+- 电子信息/微电子：芯片设计、通信、嵌入式、硬件工程师。
+- 机械/自动化：机器人、汽车、智能制造。
+- 化工/材料：能源、半导体材料、新能源电池、塑料回收、可持续航空燃料。
+- 土木/建筑：设计、施工、城市更新、工程管理。
+- 新工科：人工智能、集成电路、智能制造、生物医学工程。
+
+### 优势与风险
+
+**优势**：就业面广，制造业、能源、基建、科技行业都需要工科生；技能可量化，项目经验和作品集比学历更有说服力；新工科是国家重点方向，长期有机会。
+
+**风险**：
+- 传统工科（土木、机械、化工）面临周期波动和转型压力。
+- 部分专业工作环境艰苦（工地、工厂、野外）。
+- 学科划分越来越细，但产业需要的是跨学科能力，学校课程可能滞后。
+- “人工智能”不是计算机别名：复旦、交大偏算法/大模型，外语类院校偏语料/语言学，财经类院校偏量化交易，师范类偏 AI 教育——选错学校等于方向错位。
+- 工科试验班拆分后，部分方向可能只能高考直录，二次选择空间反而缩小。
+
+### 适合人群
+
+喜欢动手、解决具体问题、看到成果落地；数理基础较好；愿意学习工程软件和实验技能；能接受从基层技术岗做起的孩子。
+
+### 播客里的真实声音
+
+- 《G大成长论》小野老师（交大电院本科）说：交大电院曾一届新生中约三分之一是电院的；2025 年电院拆分为计算机、集成电路、人工智能、电气工程四个学院。拆分后“山头”回来了，老师积极性提高，但学生高考直录的选择空间可能变小。
+- 夏至老师指出：很多高中生对专业没有具象认识，却要高三就决定未来一辈子的方向；层次比较低的学校也在开人工智能专业，家长要怀疑“这个学校真的有这样的老师可以教吗？”
+- 化工博士 Serena 在《我是女博士》中说：Science 是 Discovery，Engineering 是解决问题；化工核心“三传一反”（动量/热量/质量传递 + 反应工程）研究如何把实验室成果放大到工业规模。
+- 她提醒：实验室成功的东西走到中试只有约 3%–5% 成功率；工程天然跟产业做得很近，必须考虑经济可行性和当地条件。
+
+### 行动建议
+
+1. 选新工科时，看课程表有没有真正的交叉内容，还是只是改名。
+2. 查清目标学校该专业的产业资源、校企合作、就业去向；同一专业名在不同学校差异巨大。
+3. 化学 ≠ 化工：前者重原理，后者重放大与工程；不要混淆。
+4. 工科就业很看项目经历，大学多做竞赛、实习、毕业设计。
+5. 关注院校学科布局变化：交大电院分拆、复旦加强新工科说明工科正在重新洗牌。
+
+### 参考播客
+
+- [又是一年高考志愿季，聊聊交大电院的分拆和复旦的新工科 - EP.90](https://www.xiaoyuzhoufm.com/episode/68372db231215eb5063c01d3) · G大成长论
+- [【18】化工博士：学工科是个创造和解决问题的过程](https://www.xiaoyuzhoufm.com/episode/662e27270b4af2d8e97e9840) · 我是女博士
+
+---
+
+## 13. 中文 / 外语 / 历史 / 哲学
+
+### 核心结论
+
+人文社科培养的是阅读、写作、批判性思维、跨文化理解等底层能力，在 AI 时代反而有其独特价值。但**本科直接就业面宽、对口少、起薪普遍不高**，考公、教师、媒体、出版、文创是重要现实出口。选择人文社科，一要兴趣驱动，二要主动积累作品和跨学科技能，三要对“文科无用论”的社会偏见有心理准备。
+
+### 代表职业
+
+- **中文**：教师、公务员、编辑、记者、新媒体运营、编剧、文案、品牌策划、内容创作者、出版、文化机构。
+- **外语**：翻译、口译、外语教师、外交官、国际组织、涉外法律/商务、跨国企业市场/公关/销售、内容出海、跨境电商。
+- **历史**：高校教师、研究员、博物馆、档案馆、记者、编辑、非虚构写作、咨询、投资、战略分析、公务员、文化遗产。
+- **哲学**：高校教师、研究员、出版、编辑、翻译、写作、公务员、政策研究、智库、咨询、公益、文化机构、转行法律/金融/科技伦理。
+
+### 优势与风险
+
+**优势**：培养可迁移的底层能力；考公岗位多（中文、历史、哲学都有优势）；跨界潜力大：中文 + 科技、历史 + 金融、哲学 + 科技伦理等；在 AI 时代，有洞察、有温度的表达更难被替代。
+
+**风险**：
+- 本科就业率整体偏低，市场化起薪不高。
+- 社会偏见强，“文科无用论”会带来心理压力。
+- 如果自己不主动写作、实践，四年可能真的“只读了几本书”。
+- 基础翻译、套路文本等岗位被 AI 冲击。
+- 学术路线漫长，tenure 压力大，待遇不高。
+
+### 适合人群
+
+真正热爱阅读、写作、思考；表达能力强；对人性、社会、文化有好奇心；能接受前期收入不高、用能力逐步建立壁垒的孩子。
+
+### 播客里的真实声音
+
+- 林晓筱（浙大比较文学博士）在《以读攻读》中说：中文系最重要的，是把十二年语文模式推翻，用全新方法论重新学习怎么研读文学作品；中文系就业率相对还是比较低，这是大实话。
+- 周老师（985 中文系教授）在《其乐容容》中说：理科解决生存问题，文科解决存在问题；越是在 AI 盛行的时代，文科教育越重要。
+- 张向荣、陆大鹏在《怪东西 Weird History》中聊道：中文系从本科角度并不培养作家；英文系最早源于京师同文馆，服务于外交与洋务；AI 时代，基础翻译被替代后，深度跨文化理解能力反而更稀缺。
+- 北大历史系毕业的小陈/小张在《东方之声》中说：历史系四年很奢侈，像一场梦；工作中的底层能力——收集信息、给出判断、讲故事、执行力——是历史系训练出来的。
+- 刘金泽（同济哲学博士）提醒：读博之前要想清楚，是把学术作为志业，还是只当成一份工作。
+
+### 行动建议
+
+1. 不要误以为中文系培养作家、英文系只做翻译、历史学只能做学术、哲学只能当老师。
+2. 大学期间一定要大量写作、运营账号、做内容项目、参加实习，把能力变成可展示的作品。
+3. 重视跨学科能力：中文 + 数据分析、外语 + 法律/金融/国际关系、历史 + 商业分析、哲学 + 科技伦理。
+4. 把考公、教师、媒体、出版、文创作为现实出口提前规划。
+5. 把 AI 当工具，不要当大脑；你的独特观察、叙事和表达是护城河。
+
+### 参考播客
+
+- [023 笨、穷，毕业即失业，日渐边缘的中文系还要不要读？](https://www.xiaoyuzhoufm.com/episode/66722f1cb6a8412729bec316) · 以读攻读
+- [vol.6 文科生别慌！985中文系老师说高考志愿大胆报](https://www.xiaoyuzhoufm.com/episode/6867a60360f8f77d40d7fdc3) · 其乐容容
+- [27 中文系、英文系，还能行吗？](https://www.xiaoyuzhoufm.com/episode/6a2ab5ea028e84948f291612) · 怪东西Weird History
+- [北大毕业10年：文科转商科，反内卷的历史系给了我们什么](https://www.xiaoyuzhoufm.com/episode/690b6e03af4fc00da74fe698) · 东方之声
+- [对话历史学博士生：宇宙的尽头究竟在哪儿？](https://www.xiaoyuzhoufm.com/episode/65cac9e00847349e0c2e5350) · 职场无界
+- [5 访谈 | 一位哲学博士的心路历程](https://www.xiaoyuzhoufm.com/episode/68cebf4aa56ca3e0c469fed1) · 政治哲学圆桌
+
+---
+
+## 14. 先探索 / 未定方向
+
+### 核心结论
+
+如果 18 岁的你完全没有方向，这很正常。**不要盲目追热门，也不要被“必须一次选对”的焦虑绑架**。优先选择城市好、转专业政策宽松、通识教育强的平台，给自己留出探索空间；同时利用高考后的 20 多天和大学四年，通过实习、职业访谈、社团、项目主动认识自己。主动性比一次选对专业更重要。
+
+### 适合人群
+
+兴趣尚不明确、但愿意主动探索；家长愿意放手，让孩子在一定安全范围内试错；对具体职业没有强烈偏好，希望保留选择空间的孩子。
+
+### 行动建议
+
+1. 优先城市：一线/新一线城市的实习、讲座、校友资源能帮你更快建立“体感”。
+2. 优先学校平台：转专业政策、大类分流规则、双学位/辅修机会、国际化交流，都是重要考量。
+3. 利用高考后 20 多天：做 MBTI/霍兰德/盖洛普只做参考，更重要的是写下“绝对不能接受的生活”和“最想过的生活”。
+4. 大一、大二多尝试：辅修、双学位、实习、社团、科研、志愿活动。
+5. 区分“喜欢消费某样东西”和“喜欢生产某样东西”：喜欢看动漫 ≠ 适合做动画，喜欢打游戏 ≠ 适合做游戏。
+6. 找 3 位不同行业的学长学姐做职业访谈，问“实际在做什么”“最后悔什么”。
+7. 若完全没方向，可先用“版本答案”兜底：理科计算机/电子信息/电气；文科师范/公安/能进体制的专业。但不要把兜底当成最优解。
+
+### 风险提示
+
+- 大类招生可能分流受限，部分热门方向竞争激烈。
+- 转专业有成绩/名额门槛，不是所有学校都容易。
+- 被动等待会错失窗口期；大学四年转瞬即逝，探索要主动。
+
+### 参考播客
+
+- [高考特别节目|大部分专业根本学不到什么东西，那大学到底给了我们什么？](https://www.xiaoyuzhoufm.com/episode/6a2bdaeb43a22a695582a8d9) · 旺仔信箱
+- [EP22 只是一次考试](https://www.xiaoyuzhoufm.com/episode/6a2d2a6843a22a695583156f) · 诗梳风
+- [Vol.107｜童年着迷的事情，拥抱了长大后的自己。](https://www.xiaoyuzhoufm.com/episode/6a27c76b7444b5722235f236) · 说说罢了:)
+- [Vol. 169 高考只是个开始，Don’t Waste Your Life](https://www.xiaoyuzhoufm.com/episode/6a29197ab554a0012468e51c) · 枫言枫语
+- [#74 人，是可以去到任何专业的（关于换赛道这件事）](https://www.xiaoyuzhoufm.com/episode/687713c160f8f77d40bf6ef8) · 徐徐的
+
+---
+
+## 15. 附录：37 期节目清单与链接
+
+| 专业/主题 | 播客链接 | 主播/嘉宾 |
+|-----------|----------|-----------|
+| 通用方法 | [Vol.168 志愿填报是一次思维模式的突围｜高考志愿填报Q&A](https://www.xiaoyuzhoufm.com/episode/6a2f9b6843a22a695583fdb0) | 钱婧老师 |
+| 通用方法 | [054.高考志愿填报指南](https://www.xiaoyuzhoufm.com/episode/6a27aef47444b5722235de88) | 家长先疯·耿忠诚 |
+| 通用方法 | [Ep.44 18岁填的志愿，30岁的简历分水岭](https://www.xiaoyuzhoufm.com/episode/6a2922a4dbccffcfa9c6b7d0) | 人在井底 |
+| 通用方法 | [普通小孩的志愿填报：先知道自己为什么普通](https://www.xiaoyuzhoufm.com/episode/6a2aaa440a34cf8ce5a776da) | G大成长论 |
+| 考公/考编 | [Vol.19 如果你希望“至少考公是个退路”](https://www.xiaoyuzhoufm.com/episode/6a2f98e143a22a695583fb8a) | 体制内｜考公人的聊天局 |
+| 考公/考编 | [Vol.132 “最”好考公的专业是工商管理](https://www.xiaoyuzhoufm.com/episode/684f67134abe6e29cb4ab4e1) | 体制内｜小职员们的聊天局 |
+| 包分配 | [152.考警校、当民警是一种怎样的体验](https://www.xiaoyuzhoufm.com/episode/6a27f67934bdac55b506d7ab) | 曳尾于涂 |
+| 包分配 | [EP01 公费师范生](https://www.xiaoyuzhoufm.com/episode/68044fe21f1db84a565df901) | 老师好！吗？ |
+| 高考后反思 | [高考特别节目\|大部分专业根本学不到什么东西](https://www.xiaoyuzhoufm.com/episode/6a2bdaeb43a22a695582a8d9) | 旺仔信箱 |
+| 高考后反思 | [EP22 只是一次考试](https://www.xiaoyuzhoufm.com/episode/6a2d2a6843a22a695583156f) | 诗梳风 |
+| 热爱与擅长 | [Vol.107｜童年着迷的事情，拥抱了长大后的自己](https://www.xiaoyuzhoufm.com/episode/6a27c76b7444b5722235f236) | 说说罢了:) |
+| 具身智能 | [高考是闭卷，但具身智能行业可以开卷](https://www.xiaoyuzhoufm.com/episode/6a25937c7444b5722234f11b) | 脑放电波 |
+| 计算机 | [毕业季｜邪修人生！Vibe Coding时代](https://www.xiaoyuzhoufm.com/episode/6a2fd7d943a22a6955842cbd) | 人民公园说AI |
+| 金融 | [169.如果你18岁，正考虑未来把金融当职业](https://www.xiaoyuzhoufm.com/episode/6a25d5587444b5722234fbc5) | 起朱楼宴宾客 |
+| 金融 | [vol.53 普通小孩的四年金融答卷](https://www.xiaoyuzhoufm.com/episode/6a257debb30e1571aea22bdf) | 辞不达意 |
+| 医学 | [027.高考志愿季:如果回到18岁，我们还会学医吗](https://www.xiaoyuzhoufm.com/episode/6a30ae7e43a22a695584744f) | 下班医生 |
+| 医学 | [VOL.71-2026年还要报考临床医学吗](https://www.xiaoyuzhoufm.com/episode/6a3053783c67992448622ab2) | 去病三分糖 |
+| 医学 | [EP11 到底要不要学医](https://www.xiaoyuzhoufm.com/episode/6a229571b30e1571aea130c1) | 狒话多说 |
+| 生物 | [E.66 生物这个“天坑”专业，我们跳进来12年了](https://www.xiaoyuzhoufm.com/episode/6678bf0cb6a8412729cce913) | 万物生长FM |
+| 农学 | [高考冷门专业？年轻人为什么还要学农](https://www.xiaoyuzhoufm.com/episode/6a2e422e43a22a6955836a11) | 食日谈 |
+| 管理学 | [Vol.132 “最”好考公的专业是工商管理](https://www.xiaoyuzhoufm.com/episode/684f67134abe6e29cb4ab4e1) | 体制内｜小职员们的聊天局 |
+| 法学 | [Ep.26 如果能重来，我还要报法学](https://www.xiaoyuzhoufm.com/episode/6a2fcb9d43a22a695584251a) | 半山腰 |
+| 法学 | [#55 劝人学法，千刀万剐](https://www.xiaoyuzhoufm.com/episode/685288752a38b4d9794ae99d) | 机智的律师生活 |
+| 理学 | [EP03：对话天体物理学PhD](https://www.xiaoyuzhoufm.com/episode/6718aef80d2f24f2893ddd40) | 梁州令 |
+| 理学 | [数学到底有什么用](https://www.xiaoyuzhoufm.com/episode/6933f72e4ef12f9fe936fbaf) | 果壳时间 |
+| 工学 | [又是一年高考志愿季，聊聊交大电院的分拆](https://www.xiaoyuzhoufm.com/episode/68372db231215eb5063c01d3) | G大成长论 |
+| 工学 | [【18】化工博士：学工科是个创造和解决问题的过程](https://www.xiaoyuzhoufm.com/episode/662e27270b4af2d8e97e9840) | 我是女博士 |
+| 中文 | [023 笨、穷，毕业即失业，日渐边缘的中文系](https://www.xiaoyuzhoufm.com/episode/66722f1cb6a8412729bec316) | 以读攻读 |
+| 中文 | [vol.6 文科生别慌！985中文系老师说高考志愿大胆报](https://www.xiaoyuzhoufm.com/episode/6867a60360f8f77d40d7fdc3) | 其乐容容 |
+| 外语 | [27 中文系、英文系，还能行吗](https://www.xiaoyuzhoufm.com/episode/6a2ab5ea028e84948f291612) | 怪东西Weird History |
+| 哲学 | [5 访谈｜一位哲学博士的心路历程](https://www.xiaoyuzhoufm.com/episode/68cebf4aa56ca3e0c469fed1) | 政治哲学圆桌 |
+| 历史 | [北大毕业10年：文科转商科](https://www.xiaoyuzhoufm.com/episode/690b6e03af4fc00da74fe698) | 东方之声 |
+| 历史 | [对话历史学博士生：宇宙的尽头究竟在哪儿](https://www.xiaoyuzhoufm.com/episode/65cac9e00847349e0c2e5350) | 职场无界 |
+| 生涯反思 | [E212 对话叶晓阳：好的系统会保护普通人](https://www.xiaoyuzhoufm.com/episode/6916d6a8cbba038b428301aa) | 知行小酒馆 |
+| 生涯反思 | [Vol.169 高考只是个开始](https://www.xiaoyuzhoufm.com/episode/6a29197ab554a0012468e51c) | 枫言枫语 |
+| 生涯反思 | [23.对话袁长庚](https://www.xiaoyuzhoufm.com/episode/696c8bec109824f9e11b4d67) | 西西弗高速 |
+| 生涯反思 | [# 工作后的迷茫，在高考前就埋下了种子](https://www.xiaoyuzhoufm.com/episode/648acd7fadc10691b7a660f7) | 声东击西 |
+| 生涯反思 | [#74 人，是可以去到任何专业的](https://www.xiaoyuzhoufm.com/episode/687713c160f8f77d40bf6ef8) | 徐徐的 |
+
+---
+
+## 写在最后
+
+志愿填报没有标准答案。节目里最常见的结论其实是：**选择大于努力，但一次选择不会决定一生。**
+
+对普通小孩来说，最重要的不是押中下一个热门专业，而是在 18 岁这一年，学会收集信息、认识自己、做出一个“当下最不后悔”的决定，并在未来持续修正它。
+
+愿你找到既能安身立命、又能尽兴而活的那条路。
+
+  </script>
+
+  <script>
+    const categories = {
+  "gongwuyuan": {
+    "name": "考公 / 体制内",
+    "icon": "🏛️",
+    "majors": "法学、汉语言文学、计算机、财会、工商管理、经济学、统计学、公共管理",
+    "summary": "稳定、可预期，适合能接受规则、文字与沟通能力较强的学生。对体制路线而言，专业代码比学校层级更重要，但工商管理≠好考公，需精确看职位表。",
+    "tips": [
+      "报志愿前先下载近 2–3 年国考/省考职位表，精确到专业代码",
+      "大学期间争取入党、一年以上学生干部、相关证书（教资/会计/法律职业资格）",
+      "不要把考公当作唯一退路，保留市场化就业能力",
+      "选岗不仅看名称，还要看地点、服务年限、是否下基层、待遇天花板",
+      "提前读《沧浪之水》，理解体制内生存逻辑"
+    ],
+    "risks": "热门考公专业分数被推高；工商管理等大类专业内部差异极大；考上后专业与岗位常不匹配（64% 受访者认为一般或不匹配）；晋升/调动不完全由个人决定；基层岗位可能在水库/乡镇/执法一线。",
+    "podcasts": [
+      {
+        "title": "Vol.19 如果你希望“至少考公是个退路”",
+        "podcast": "体制内｜考公人的聊天局",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a2f98e143a22a695583fb8a"
+      },
+      {
+        "title": "Vol.132 “最”好考公的专业是工商管理",
+        "podcast": "体制内｜小职员们的聊天局",
+        "url": "https://www.xiaoyuzhoufm.com/episode/684f67134abe6e29cb4ab4e1"
+      }
+    ]
+  },
+  "jingxiao": {
+    "name": "警校 / 公安类",
+    "icon": "🚔",
+    "majors": "公安学类、公安技术类",
+    "summary": "近似包分配，公安联考通过率极高，但管理严格、工作辛苦、岗位分配受组织决定。对身体、纪律性、心理承受力有硬要求。",
+    "tips": [
+      "提前确认体检、体能、政审要求（体测四项过三项即可）",
+      "女生名额少、分数线更高，入警后相对轻松但性价比需单独评估",
+      "警校实行半军事化管理，评估孩子是否能适应全年警服、统一作息",
+      "新警一般先到基层派出所锻炼 1–2 年",
+      "工作以后专业不一定对口，实际工作能力与特长更重要"
+    ],
+    "risks": "必须通过公安联考，极少数会退出警察序列；半军事化管理自由度低；工作强度大、值班多、风险高；岗位分配“哪里来哪里去”，多数回生源地；专业与岗位不一定对口。",
+    "podcasts": [
+      {
+        "title": "152.考警校、当民警是一种怎样的体验",
+        "podcast": "曳尾于涂",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a27f67934bdac55b506d7ab"
+      }
+    ]
+  },
+  "shifan": {
+    "name": "公费师范生 / 教师",
+    "icon": "📚",
+    "majors": "汉语言文学（师范）、数学与应用数学（师范）、英语（师范）、物理学（师范）等",
+    "summary": "免学费、有编制、服务期长，适合喜欢孩子、能接受基层或指定地区工作的人。但 18 岁决定一辈子当老师容易后悔，成就感高度依赖学校环境。",
+    "tips": [
+      "看清服务期年限、违约条款、生源地/定向地限制",
+      "去学校实地感受目标地区的学生质量与管理风格",
+      "若目标是考公/转行，提前了解服务期内报考政策",
+      "教师成就感滞后且依赖环境，边疆/基层与内地差异巨大",
+      "若并非真心喜欢教育，只是图稳定，请慎重"
+    ],
+    "risks": "服务期内调动受限；违约成本高；成就感高度依赖学校/学生/家长/地方财政；职业天花板较低；同一批进校教师流动性不低，不适应者可能抑郁辞职。",
+    "podcasts": [
+      {
+        "title": "EP01 公费师范生｜18岁选择一辈子的教师职业",
+        "podcast": "老师好！吗？",
+        "url": "https://www.xiaoyuzhoufm.com/episode/68044fe21f1db84a565df901"
+      }
+    ]
+  },
+  "jinrong": {
+    "name": "金融",
+    "icon": "💹",
+    "majors": "金融学、经济学、会计学、统计学、数学与应用数学、计算机",
+    "summary": "学校、城市、实习经历比本科专业更重要；本科不一定非要学金融，数学/理工科背景反而更稳妥。高薪光环在褪色，初级信息岗受 AI 冲击最大。",
+    "tips": [
+      "优先选择一线城市和名校",
+      "本科优先考虑数学、统计、计算机、理工科，研究生或工作中再补金融",
+      "尽早实习：银行、券商、基金、企业财务都体验一下",
+      "破除影视作品滤镜，了解银行客户经理、保险销售等基础岗位才是吸纳主体",
+      "想做投资/研究前台，先去产业工作几年往往更有优势"
+    ],
+    "risks": "高薪光环减弱，IPO 与一二级市场处低潮；二代/关系户比例上升，普通家庭孩子竞争压力大；初级岗位受 AI 冲击大；收入波动大、工作强度高。",
+    "podcasts": [
+      {
+        "title": "169.如果你18岁，正考虑未来把金融当职业",
+        "podcast": "起朱楼宴宾客",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a25d5587444b5722234fbc5"
+      },
+      {
+        "title": "vol.53 普通小孩的四年金融答卷",
+        "podcast": "辞不达意BeyondWords",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a257debb30e1571aea22bdf"
+      }
+    ]
+  },
+  "computer": {
+    "name": "计算机 / AI",
+    "icon": "💻",
+    "majors": "计算机科学与技术、软件工程、人工智能、数据科学、信息安全",
+    "summary": "已从时代红利变成通用技能。只会基础编码的红利正在消失，但“用代码解决问题、做出产品”的能力仍然值钱。城市与产业集聚非常重要。",
+    "tips": [
+      "优先去产业集聚的一线城市（北京、上海、深圳、杭州）",
+      "尽早做项目、实习、参加开源社区",
+      "用 AI 工具做一个小产品挂出去，比简历写“精通 Python”更有说服力",
+      "重视产品思维 + 技术实现，而不只是算法",
+      "确认孩子是“喜欢生产技术”而不是“喜欢消费技术产品”"
+    ],
+    "risks": "基础编码岗位快速贬值；行业竞争激烈、大厂门槛高、加班多、35 岁焦虑真实存在；计算机/软件工程专业已过热饱和；学校课程可能滞后。",
+    "podcasts": [
+      {
+        "title": "毕业季｜邪修人生！Vibe Coding时代",
+        "podcast": "人民公园说AI",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a2fd7d943a22a6955842cbd"
+      },
+      {
+        "title": "高考是闭卷，但具身智能行业可以开卷",
+        "podcast": "脑放电波",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a25937c7444b5722234f11b"
+      }
+    ]
+  },
+  "xingongke": {
+    "name": "新工科 / 具身智能 / 硬科技",
+    "icon": "🤖",
+    "majors": "机械工程、自动化、电子信息、电气工程、机器人工程、集成电路",
+    "summary": "硬科技招聘更看重机器人竞赛经历与解决真实问题的能力，学校/GPA 权重下降。行业极早期，机会与泡沫并存，不要急着以“具身智能”专业本身作为目标。",
+    "tips": [
+      "参加 RoboMaster/RoboCup/RoboCon 等竞赛，比赛经历可能比 GPA 更有说服力",
+      "优先选择产业资源强的城市：北京、上海、深圳、杭州",
+      "本科选机械/自动化/电子/计算机等大类即可，不要追逐名称",
+      "尽早进实验室、做项目、打比赛，构建正反馈",
+      "确认孩子是真的从小热爱动手，而不是被“风口”吸引"
+    ],
+    "risks": "行业尚未到“GPT-1 时刻”，泡沫可能破裂；创业小公司风险高；大厂/国企/航天等领域仍有学历门槛；需要极强的主动性、动手能力和跨学科整合能力。",
+    "podcasts": [
+      {
+        "title": "高考是闭卷，但具身智能行业可以开卷",
+        "podcast": "脑放电波",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a25937c7444b5722234f11b"
+      }
+    ]
+  },
+  "yixue": {
+    "name": "医学",
+    "icon": "🩺",
+    "majors": "临床医学、口腔医学、麻醉学、医学影像学、医学检验、护理学",
+    "summary": "培养周期极长（5+3+3+规培，30 岁才刚独立做医生），前十年收入与投入严重不匹配，科室差异大到“像两种人生”。需要热爱、身体、情绪稳定与终身学习意愿。",
+    "tips": [
+      "去医院找真实医生聊一天，重点问科室差异、作息、收入曲线、转行路径",
+      "区分临床/口腔/麻醉/影像/检验/护理/法医/公共卫生，它们是不同人生",
+      "若目标是高收入/快钱，不建议学医",
+      "若家庭无法承担长期低回报，需谨慎",
+      "医学训练可迁移，不喜欢临床不一定失败"
+    ],
+    "risks": "前 10–20 年收入与投入严重不匹配；规培期间月薪可能仅 3000 元；工作强度大、夜班多、身体消耗大；医患关系与行政事务消耗精力；科室选择常受调剂影响；女医生还面临性别与心理压力。",
+    "podcasts": [
+      {
+        "title": "027.高考志愿季:如果回到 18 岁，我们还会学医吗？",
+        "podcast": "下班医生",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a30ae7e43a22a695584744f"
+      },
+      {
+        "title": "VOL.71-2026年还要报考临床医学吗",
+        "podcast": "去病三分糖",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a3053783c67992448622ab2"
+      },
+      {
+        "title": "EP11 到底要不要学医",
+        "podcast": "狒话多说",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a229571b30e1571aea130c1"
+      }
+    ]
+  },
+  "shengwu": {
+    "name": "生物 / 农学",
+    "icon": "🌱",
+    "majors": "生物科学、生物技术、生物信息、生物统计、农学、植物保护、智慧农业",
+    "summary": "“天坑”本质是本科教育与就业市场的错配。纯生物/传统农学本科就业面窄、起薪偏低；交叉方向（生物信息、智慧农业、农业工程、碳核算）更有就业弹性。",
+    "tips": [
+      "优先考虑交叉方向：生物信息、生物统计、合成生物、智慧农业、农业工程、碳核算",
+      "尽早进实验室/田间/企业实习，验证真实节奏",
+      "读到博士不是唯一解：国外生物博士主流去企业，农学硕士+实践经验性价比可能更高",
+      "高中生物好不是报考理由，要区分“喜欢知识”和“喜欢做实验/长期研究”",
+      "农学选校关注科技小院、曲周实验站等实践平台"
+    ],
+    "risks": "本科直接就业面窄，硕士几乎是起步；学术路线竞争激烈、待遇偏低；企业研发岗位集中在少数城市和头部公司；农学工作环境艰苦、社会认知偏见强；“21 世纪是生物的世纪”指产业周期，个人回报不一定同步。",
+    "podcasts": [
+      {
+        "title": "E.66 生物这个“天坑”专业，我们跳进来12年了",
+        "podcast": "万物生长FM",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6678bf0cb6a8412729cce913"
+      },
+      {
+        "title": "高考冷门专业？年轻人为什么还要学农",
+        "podcast": "食日谈",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a2e422e43a22a6955836a11"
+      }
+    ]
+  },
+  "faxue": {
+    "name": "法学",
+    "icon": "⚖️",
+    "majors": "法学、知识产权、监狱学",
+    "summary": "考公大户、专业壁垒高，法考是硬门槛。真实律师工作远没有影视剧光鲜，情绪劳动强度高。本科非法学 + 法考 + 实习也能入行，复合背景在商事/涉外/知产领域有优势。",
+    "tips": [
+      "尽早了解法考通过率与备考难度，把法考作为底线目标",
+      "多去法院、检察院、律所、企业法务实习",
+      "法学 + 外语/金融/知识产权/理工科，复合背景更有竞争力",
+      "评估自己的情绪劳动耐受度",
+      "如果目标是体制，确认岗位对法学本科还是法律硕士有要求"
+    ],
+    "risks": "法考客观题 2024 年通过率仅约 13.8%；律师行业“二八效应”明显，年轻律师收入低、案源压力大；工作强度大、出差加班多；AI 改变合同审查/检索等基础工作；学校出身影响市场化求职。",
+    "podcasts": [
+      {
+        "title": "Ep.26 如果能重来，我还要报法学",
+        "podcast": "半山腰 Halfway There",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a2fcb9d43a22a695584251a"
+      },
+      {
+        "title": "#55 劝人学法，千刀万剐？",
+        "podcast": "机智的律师生活",
+        "url": "https://www.xiaoyuzhoufm.com/episode/685288752a38b4d9794ae99d"
+      }
+    ]
+  },
+  "lixue": {
+    "name": "理学 / 数学 / 天文",
+    "icon": "🔭",
+    "majors": "数学与应用数学、物理学、天文学、统计学",
+    "summary": "兴趣驱动、转行灵活；数学是金融/计算机/AI 的底层语言，也是抵御偏见、提出好问题的思维工具。天文学浪漫但科研日常是数据处理与编程。短期经济效益不明显，家庭要有耐心。",
+    "tips": [
+      "确认自己喜欢抽象思维而非只是“数学成绩好”或“喜欢星空照片”",
+      "理学本科走应用方向建议辅修计算机或金融",
+      "天文学可走平铺路径：科普、仪器、数据、教育",
+      "天文学对英语要求很高，教材/论文/会议以英文为主",
+      "多参加数学建模、天文社团、数据分析项目验证兴趣"
+    ],
+    "risks": "纯学术岗位少，博士几乎是标配；需要长期海外交流/博士后，生活不稳定；不够热爱容易被漫长科研周期消磨；不是每个人都适合抽象思维；短期经济效益不明显。",
+    "podcasts": [
+      {
+        "title": "EP03：对话天体物理学PhD",
+        "podcast": "梁州令",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6718aef80d2f24f2893ddd40"
+      },
+      {
+        "title": "数学到底有什么用",
+        "podcast": "果壳时间",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6933f72e4ef12f9fe936fbaf"
+      }
+    ]
+  },
+  "gongxue": {
+    "name": "工学",
+    "icon": "⚙️",
+    "majors": "化学工程、材料科学与工程、电子信息、电气工程、微电子、集成电路",
+    "summary": "重实践与产业对接；同一专业名在不同学校差异巨大，工程思维强调解决真实场景问题。新工科是国家重点方向，但部分学校跟风设专业，课程质量存疑。",
+    "tips": [
+      "查清目标学校该专业的产业资源、校企合作、培养方案",
+      "化学 ≠ 化工：前者重原理，后者重放大与工程",
+      "新工科看课程表是否有真正交叉内容，还是只改名",
+      "工科就业很看项目经历，多做竞赛、实习、毕业设计",
+      "关注院校学科布局变化：电院分拆、复旦新工科等"
+    ],
+    "risks": "传统工科面临周期波动和转型压力；部分专业工作环境艰苦（工地/工厂/野外）；学科划分越来越细，产业需要跨学科能力；人工智能等专业在不同学校定位差异巨大。",
+    "podcasts": [
+      {
+        "title": "又是一年高考志愿季，聊聊交大电院的分拆",
+        "podcast": "G大成长论",
+        "url": "https://www.xiaoyuzhoufm.com/episode/68372db231215eb5063c01d3"
+      },
+      {
+        "title": "【18】化工博士：学工科是个创造和解决问题的过程",
+        "podcast": "我是女博士",
+        "url": "https://www.xiaoyuzhoufm.com/episode/662e27270b4af2d8e97e9840"
+      }
+    ]
+  },
+  "renwen": {
+    "name": "中文 / 外语 / 历史 / 哲学",
+    "icon": "📖",
+    "majors": "汉语言文学、英语/小语种、历史学、哲学",
+    "summary": "培养阅读、写作、批判性思维、跨文化理解等底层能力，在 AI 时代有其独特价值。但本科直接就业面宽、对口少、起薪普遍不高，需要兴趣驱动 + 主动积累作品 + 跨学科技能。",
+    "tips": [
+      "不要误以为中文系培养作家、英文系只做翻译、历史只能做学术、哲学只能当老师",
+      "大学期间大量写作、运营账号、做内容项目、参加实习",
+      "重视跨学科能力：中文+数据分析、外语+法律/金融、历史+商业分析、哲学+科技伦理",
+      "把考公、教师、媒体、出版、文创作为现实出口提前规划",
+      "把 AI 当工具，独特观察、叙事和表达是护城河"
+    ],
+    "risks": "本科就业率整体偏低；市场化起薪不高；社会偏见强（“文科无用论”）；基础翻译/套路文本岗位被 AI 冲击；学术路线漫长、tenure 压力大。",
+    "podcasts": [
+      {
+        "title": "023 笨、穷，毕业即失业，日渐边缘的中文系",
+        "podcast": "以读攻读",
+        "url": "https://www.xiaoyuzhoufm.com/episode/66722f1cb6a8412729bec316"
+      },
+      {
+        "title": "vol.6 文科生别慌！985中文系老师说高考志愿大胆报",
+        "podcast": "其乐容容",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6867a60360f8f77d40d7fdc3"
+      },
+      {
+        "title": "27 中文系、英文系，还能行吗？",
+        "podcast": "怪东西Weird History",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a2ab5ea028e84948f291612"
+      },
+      {
+        "title": "北大毕业10年：文科转商科",
+        "podcast": "东方之声",
+        "url": "https://www.xiaoyuzhoufm.com/episode/690b6e03af4fc00da74fe698"
+      },
+      {
+        "title": "对话历史学博士生：宇宙的尽头究竟在哪儿",
+        "podcast": "职场无界",
+        "url": "https://www.xiaoyuzhoufm.com/episode/65cac9e00847349e0c2e5350"
+      },
+      {
+        "title": "5 访谈｜一位哲学博士的心路历程",
+        "podcast": "政治哲学圆桌",
+        "url": "https://www.xiaoyuzhoufm.com/episode/68cebf4aa56ca3e0c469fed1"
+      }
+    ]
+  },
+  "tansuo": {
+    "name": "先探索 / 未定方向",
+    "icon": "🧭",
+    "majors": "通识教育、大类招生、转专业政策宽松的院校",
+    "summary": "如果完全没有方向，优先选择城市好、转专业灵活、通识教育强的平台，主动利用高考后的 20 多天和大学四年探索自己。主动性比一次选对专业更重要。",
+    "tips": [
+      "优先城市：一线/新一线城市的实习、讲座、校友资源能帮你更快建立体感",
+      "优先学校平台：转专业政策、大类分流规则、双学位/辅修机会",
+      "高考后 20 多天做自我探索：写下“绝对不能接受的生活”和“最想过的生活”",
+      "大一、大二多尝试：辅修、双学位、实习、社团、科研、志愿活动",
+      "区分“喜欢消费某样东西”和“喜欢生产某样东西”"
+    ],
+    "risks": "大类招生可能分流受限；转专业有成绩/名额门槛；被动等待会错失窗口期；不要把“版本答案”当成最优解。",
+    "podcasts": [
+      {
+        "title": "Vol.168 志愿填报是一次思维模式的突围",
+        "podcast": "钱婧老师的会客厅",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a2f9b6843a22a695583fdb0"
+      },
+      {
+        "title": "054.高考志愿填报指南",
+        "podcast": "家长先疯",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a27aef47444b5722235de88"
+      },
+      {
+        "title": "高考特别节目|大部分专业根本学不到什么东西",
+        "podcast": "旺仔信箱",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a2bdaeb43a22a695582a8d9"
+      },
+      {
+        "title": "Vol.107｜童年着迷的事情，拥抱了长大后的自己",
+        "podcast": "说说罢了",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6a27c76b7444b5722235f236"
+      },
+      {
+        "title": "E212 对话叶晓阳：好的系统会保护普通人",
+        "podcast": "知行小酒馆",
+        "url": "https://www.xiaoyuzhoufm.com/episode/6916d6a8cbba038b428301aa"
+      },
+      {
+        "title": "#74 人，是可以去到任何专业的",
+        "podcast": "徐徐的",
+        "url": "https://www.xiaoyuzhoufm.com/episode/687713c160f8f77d40bf6ef8"
+      }
+    ]
+  }
+};
+
+    const questions = [
+  {
+    "title": "1. 选择志愿时，你最想优先满足什么？",
+    "options": [
+      {
+        "text": "稳定、可预期的生活（公务员/编制/国企）",
+        "scores": {
+          "gongwuyuan": 3,
+          "jingxiao": 2,
+          "shifan": 2,
+          "yixue": 1
+        }
+      },
+      {
+        "text": "高收入、高成长潜力",
+        "scores": {
+          "jinrong": 3,
+          "computer": 3,
+          "xingongke": 2,
+          "gongxue": 2
+        }
+      },
+      {
+        "text": "追随兴趣和热爱",
+        "scores": {
+          "renwen": 3,
+          "lixue": 3,
+          "shengwu": 2,
+          "yixue": 2
+        }
+      },
+      {
+        "text": "我还没想清楚，想先探索",
+        "scores": {
+          "tansuo": 3,
+          "renwen": 2,
+          "lixue": 1
+        }
+      }
+    ]
+  },
+  {
+    "title": "2. 你认为自己最强的能力或兴趣在哪个领域？",
+    "options": [
+      {
+        "text": "数学、物理、逻辑推理",
+        "scores": {
+          "computer": 3,
+          "lixue": 3,
+          "gongxue": 2,
+          "jinrong": 2
+        }
+      },
+      {
+        "text": "语文、英语、阅读写作、人文社科",
+        "scores": {
+          "renwen": 3,
+          "faxue": 2,
+          "shifan": 2,
+          "gongwuyuan": 1
+        }
+      },
+      {
+        "text": "生物、化学、实验、自然观察",
+        "scores": {
+          "yixue": 3,
+          "shengwu": 3,
+          "gongxue": 1
+        }
+      },
+      {
+        "text": "动手实践、拆装修、机器人、技术",
+        "scores": {
+          "xingongke": 3,
+          "gongxue": 3,
+          "computer": 2
+        }
+      },
+      {
+        "text": "综合或暂时不明显",
+        "scores": {
+          "tansuo": 3
+        }
+      }
+    ]
+  },
+  {
+    "title": "3. 你能接受的最长教育/培养周期是？",
+    "options": [
+      {
+        "text": "本科 4 年，尽快工作",
+        "scores": {
+          "gongwuyuan": 2,
+          "jinrong": 1,
+          "computer": 1,
+          "gongxue": 1
+        }
+      },
+      {
+        "text": "本科+硕士，约 6–7 年",
+        "scores": {
+          "faxue": 2,
+          "renwen": 1,
+          "jinrong": 1,
+          "gongxue": 1
+        }
+      },
+      {
+        "text": "10 年以上（本博、规培等）",
+        "scores": {
+          "yixue": 4,
+          "lixue": 2,
+          "shengwu": 2
+        }
+      },
+      {
+        "text": "不确定，看情况",
+        "scores": {
+          "tansuo": 2
+        }
+      }
+    ]
+  },
+  {
+    "title": "4. 你对工作地点/城市的偏好？",
+    "options": [
+      {
+        "text": "愿意回家乡或指定地区",
+        "scores": {
+          "jingxiao": 2,
+          "shifan": 2,
+          "gongwuyuan": 1
+        }
+      },
+      {
+        "text": "一定要去一线城市/产业前沿",
+        "scores": {
+          "jinrong": 3,
+          "computer": 3,
+          "xingongke": 2,
+          "faxue": 2
+        }
+      },
+      {
+        "text": "二三线城市也能接受",
+        "scores": {
+          "gongxue": 2,
+          "yixue": 1,
+          "shifan": 1
+        }
+      },
+      {
+        "text": "无所谓，看机会",
+        "scores": {
+          "tansuo": 1
+        }
+      }
+    ]
+  },
+  {
+    "title": "5. 你更能接受哪种工作日常？",
+    "options": [
+      {
+        "text": "规律、压力可控、朝九晚五",
+        "scores": {
+          "gongwuyuan": 3,
+          "shifan": 2,
+          "renwen": 1
+        }
+      },
+      {
+        "text": "高强度、高回报、节奏快",
+        "scores": {
+          "jinrong": 3,
+          "computer": 2,
+          "yixue": 1
+        }
+      },
+      {
+        "text": "长期投入、延迟满足、做研究",
+        "scores": {
+          "lixue": 3,
+          "shengwu": 3,
+          "yixue": 2
+        }
+      },
+      {
+        "text": "动手实操、解决具体问题",
+        "scores": {
+          "gongxue": 3,
+          "xingongke": 3,
+          "computer": 1
+        }
+      }
+    ]
+  },
+  {
+    "title": "6. 你的身体条件与抗压能力？",
+    "options": [
+      {
+        "text": "很好，能适应军训、夜班、手术等",
+        "scores": {
+          "jingxiao": 3,
+          "yixue": 2
+        }
+      },
+      {
+        "text": "一般，希望避免过度消耗",
+        "scores": {
+          "gongwuyuan": 2,
+          "renwen": 2,
+          "faxue": 1
+        }
+      },
+      {
+        "text": "较弱或有健康顾虑",
+        "scores": {
+          "yixue": -2,
+          "jingxiao": -4,
+          "xingongke": -1
+        }
+      }
+    ]
+  },
+  {
+    "title": "7. 家庭经济对你的选择约束？",
+    "options": [
+      {
+        "text": "需要免学费/尽快工作/包分配",
+        "scores": {
+          "jingxiao": 3,
+          "shifan": 3,
+          "gongwuyuan": 2,
+          "gongxue": 1
+        }
+      },
+      {
+        "text": "可承担硕士阶段投入",
+        "scores": {
+          "faxue": 1,
+          "renwen": 1
+        }
+      },
+      {
+        "text": "可支持长期深造甚至留学",
+        "scores": {
+          "lixue": 2,
+          "shengwu": 1,
+          "jinrong": 1
+        }
+      },
+      {
+        "text": "不想给家里增加负担",
+        "scores": {
+          "yixue": -1,
+          "lixue": -1,
+          "shengwu": -1
+        }
+      }
+    ]
+  },
+  {
+    "title": "8. 你如何看待“与人打交道”？",
+    "options": [
+      {
+        "text": "擅长并享受",
+        "scores": {
+          "jinrong": 2,
+          "faxue": 2,
+          "gongwuyuan": 1,
+          "shifan": 1
+        }
+      },
+      {
+        "text": "可以应付，但更愿与事物/系统打交道",
+        "scores": {
+          "computer": 2,
+          "gongxue": 2,
+          "lixue": 2
+        }
+      },
+      {
+        "text": "比较社恐/抗拒",
+        "scores": {
+          "jinrong": -1,
+          "faxue": -1,
+          "gongwuyuan": -1,
+          "computer": 1,
+          "lixue": 1
+        }
+      }
+    ]
+  },
+  {
+    "title": "9. 你对 AI 的态度？",
+    "options": [
+      {
+        "text": "想主动拥抱 AI/技术浪潮",
+        "scores": {
+          "computer": 3,
+          "xingongke": 2,
+          "jinrong": 1
+        }
+      },
+      {
+        "text": "希望选择 AI 难以替代的工作",
+        "scores": {
+          "yixue": 2,
+          "jingxiao": 1,
+          "renwen": 1,
+          "faxue": 1
+        }
+      },
+      {
+        "text": "不太关心",
+        "scores": {}
+      }
+    ]
+  },
+  {
+    "title": "10. 是否有明确的职业想象？",
+    "options": [
+      {
+        "text": "医生/护士/医学研究",
+        "scores": {
+          "yixue": 4
+        }
+      },
+      {
+        "text": "警察/军人/公共安全",
+        "scores": {
+          "jingxiao": 4
+        }
+      },
+      {
+        "text": "律师/法官/检察官",
+        "scores": {
+          "faxue": 4
+        }
+      },
+      {
+        "text": "教师",
+        "scores": {
+          "shifan": 4
+        }
+      },
+      {
+        "text": "程序员/AI/工程师",
+        "scores": {
+          "computer": 2,
+          "xingongke": 2,
+          "gongxue": 2
+        }
+      },
+      {
+        "text": "金融/投资/咨询",
+        "scores": {
+          "jinrong": 4
+        }
+      },
+      {
+        "text": "作家/编辑/翻译/研究",
+        "scores": {
+          "renwen": 4
+        }
+      },
+      {
+        "text": "科学家/研究员",
+        "scores": {
+          "lixue": 3,
+          "shengwu": 2
+        }
+      },
+      {
+        "text": "没有明确想法",
+        "scores": {
+          "tansuo": 3
+        }
+      }
+    ]
+  }
+];
+
+    let current = 0;
+    const answers = [];
+
+    const quizCard = document.getElementById('quiz-card');
+    const resultCard = document.getElementById('result-card');
+    const questionTitle = document.getElementById('question-title');
+    const optionsContainer = document.getElementById('options-container');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const progressContainer = document.getElementById('progress-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nav = document.getElementById('navigation');
+
+    function renderQuestion() {
+      const q = questions[current];
+      questionTitle.textContent = q.title;
+      optionsContainer.innerHTML = '';
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "option-card w-full text-left px-5 py-4 rounded-xl border border-slate-200 bg-white hover:border-indigo-400 hover:bg-indigo-50 flex items-start gap-3";
+        btn.innerHTML = `<span class="mt-0.5 text-indigo-600 font-bold">${String.fromCharCode(65 + idx)}.</span><span class="text-slate-700">${opt.text}</span>`;
+        btn.onclick = () => selectOption(idx);
+        optionsContainer.appendChild(btn);
+      });
+
+      const pct = ((current + 1) / questions.length) * 100;
+      progressBar.style.width = pct + '%';
+      progressText.textContent = `${current + 1} / ${questions.length}`;
+
+      nav.classList.remove('hidden');
+      prevBtn.classList.toggle('hidden', current === 0);
+      prevBtn.onclick = () => {
+        if (current > 0) { current--; renderQuestion(); }
+      };
+
+      quizCard.classList.remove('fade-in');
+      void quizCard.offsetWidth;
+      quizCard.classList.add('fade-in');
+    }
+
+    function selectOption(idx) {
+      answers[current] = idx;
+      if (current < questions.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function computeScores() {
+      const scores = {};
+      Object.keys(categories).forEach(k => scores[k] = 0);
+
+      answers.forEach((ansIdx, qIdx) => {
+        const opt = questions[qIdx].options[ansIdx];
+        if (opt && opt.scores) {
+          Object.entries(opt.scores).forEach(([cat, val]) => {
+            if (scores[cat] !== undefined) scores[cat] += val;
+          });
+        }
+      });
+      return scores;
+    }
+
+    function getWarnings(topKey) {
+      const warnings = [];
+      const q6 = questions[5].options[answers[5]].text;
+      const q7 = questions[6].options[answers[6]].text;
+
+      if (q6.includes("较弱") && (topKey === 'yixue' || topKey === 'jingxiao')) {
+        warnings.push("你提到身体或抗压能力较弱，而医学/警校对身体和纪律要求较高，建议慎重并具体咨询从业者。");
+      }
+      if (q7.includes("免学费") && (topKey === 'yixue' || topKey === 'lixue' || topKey === 'shengwu')) {
+        warnings.push("你提到需要减轻经济负担，而该方向培养周期长、短期收入低，请重点了解奖助贷与公费/定向政策。");
+      }
+      if (topKey === 'tansuo') {
+        warnings.push("你目前方向感不强，建议优先选择城市好、转专业/大类分流灵活的学校，利用假期实习和访谈尽快缩小范围。");
+      }
+      if (topKey === 'renwen' && q7.includes("尽快工作")) {
+        warnings.push("文科直接就业面宽但起薪不高，若经济压力大，建议在校期间叠加实习、证书或考公准备。");
+      }
+      return warnings;
+    }
+
+    function showResults() {
+      quizCard.classList.add('hidden');
+      resultCard.classList.remove('hidden');
+
+      const scores = computeScores();
+      const sorted = Object.entries(scores)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 4)
+        .filter(([_, s]) => s > 0);
+
+      const resultsList = document.getElementById('results-list');
+      resultsList.innerHTML = '';
+
+      sorted.forEach(([key, score], idx) => {
+        const cat = categories[key];
+        const warnings = getWarnings(key);
+        const isTop = idx === 0;
+
+        const card = document.createElement('div');
+        card.className = `rounded-xl border ${isTop ? 'border-indigo-300 bg-indigo-50/60' : 'border-slate-200 bg-white'} overflow-hidden`;
+
+        card.innerHTML = `
+          <div class="p-5 cursor-pointer flex items-start justify-between gap-4" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-2xl">${cat.icon}</span>
+                <h3 class="text-lg font-bold text-slate-900">${cat.name}</h3>
+                ${isTop ? '<span class="ml-2 px-2 py-0.5 rounded-full bg-indigo-600 text-white text-xs">最匹配</span>' : ''}
+              </div>
+              <p class="text-sm text-slate-600">${cat.summary}</p>
+            </div>
+            <span class="text-slate-400 text-sm">展开 ▼</span>
+          </div>
+          <div class="hidden px-5 pb-5 text-sm text-slate-700 space-y-3">
+            <div><strong>推荐专业：</strong>${cat.majors}</div>
+            <div><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1">${cat.podcasts.map(p => `<li><a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">${p.title}</a> · ${p.podcast}</li>`).join('')}</ul></div>
+            <div><strong>风险提示：</strong>${cat.risks}</div>
+            <div><strong>行动建议：</strong>
+              <ul class="list-disc list-inside mt-1 space-y-1">
+                ${cat.tips.map(t => `<li>${t}</li>`).join('')}
+              </ul>
+            </div>
+            ${warnings.length ? `<div class="mt-2 p-3 bg-amber-50 border border-amber-100 rounded-lg text-amber-800"><strong>针对你的特别提醒：</strong><ul class="list-disc list-inside mt-1">${warnings.map(w => `<li>${w}</li>`).join('')}</ul></div>` : ''}
+          </div>
+        `;
+        resultsList.appendChild(card);
+      });
+
+      if (sorted.length === 0 || sorted[0][1] < 4) {
+        const cat = categories.tansuo;
+        const card = document.createElement('div');
+        card.className = "rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm text-slate-700";
+        card.innerHTML = `
+          <div class="flex items-center gap-2 mb-2"><span class="text-xl">${cat.icon}</span><strong>${cat.name}</strong></div>
+          <p>${cat.summary}</p>
+          <ul class="list-disc list-inside mt-2 space-y-1">${cat.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+          <div class="mt-3"><strong>参考播客：</strong><ul class="list-disc list-inside mt-1 space-y-1">${cat.podcasts.map(p => `<li><a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">${p.title}</a> · ${p.podcast}</li>`).join('')}</ul></div>
+        `;
+        resultsList.appendChild(card);
+      }
+    }
+
+    document.getElementById('restart-btn').onclick = () => {
+      current = 0;
+      answers.length = 0;
+      resultCard.classList.add('hidden');
+      quizCard.classList.remove('hidden');
+      renderQuestion();
+    };
+
+    // Tabs
+    function switchTab(name) {
+      const panels = {
+        quiz: 'quiz-panel',
+        article: 'article-panel',
+        ref: 'ref-panel',
+        about: 'about-panel'
+      };
+      const buttons = ['tab-quiz', 'tab-article', 'tab-ref', 'tab-about'];
+
+      Object.entries(panels).forEach(([key, id]) => {
+        const el = document.getElementById(id);
+        if (key === name) el.classList.remove('hidden');
+        else el.classList.add('hidden');
+      });
+
+      buttons.forEach(id => {
+        const btn = document.getElementById(id);
+        if (id === 'tab-' + name) {
+          btn.classList.remove('tab-inactive');
+          btn.classList.add('tab-active');
+        } else {
+          btn.classList.remove('tab-active');
+          btn.classList.add('tab-inactive');
+        }
+      });
+
+      if (progressContainer) {
+        if (name === 'quiz') progressContainer.classList.remove('hidden');
+        else progressContainer.classList.add('hidden');
+      }
+
+      // Show/hide floating TOC/back-to-top only in article panel
+      const tocToggle = document.getElementById('toc-toggle');
+      const backToTop = document.getElementById('back-to-top');
+      const tocPanel = document.getElementById('toc-panel');
+      if (name === 'article') {
+        tocToggle.classList.remove('hidden');
+        backToTop.classList.remove('hidden');
+      } else {
+        tocToggle.classList.add('hidden');
+        backToTop.classList.add('hidden');
+        tocPanel.classList.add('hidden');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Markdown rendering + TOC
+    function slugifyForToc(text) {
+      return text.trim()
+        .replace(/^\d+\.\s*/, '')
+        .replace(/[():：,.!?|&"“”‘’（）：？！，。]+/g, '-')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+    }
+
+    function renderMarkdown() {
+      const mdSource = document.getElementById('md-source');
+      const mdRendered = document.getElementById('md-rendered');
+      if (typeof marked !== 'undefined' && mdSource && mdRendered) {
+        mdRendered.innerHTML = marked.parse(mdSource.textContent);
+        assignHeadingIds();
+        buildToc();
+        setupMdAnchors();
+      } else if (mdRendered) {
+        mdRendered.textContent = 'Markdown 渲染组件加载失败，请刷新页面或检查网络。';
+      }
+    }
+
+    function assignHeadingIds() {
+      const mdRendered = document.getElementById('md-rendered');
+      if (!mdRendered) return;
+      const headings = mdRendered.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      headings.forEach(h => {
+        h.id = slugifyForToc(h.textContent);
+      });
+      // Sync all internal anchor links to the same slug scheme
+      mdRendered.querySelectorAll('a[href^="#"]').forEach(a => {
+        const slug = slugifyForToc(a.textContent);
+        if (slug) a.setAttribute('href', '#' + slug);
+      });
+    }
+
+    function setupMdAnchors() {
+      const mdRendered = document.getElementById('md-rendered');
+      if (!mdRendered) return;
+      mdRendered.addEventListener('click', function(e) {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        const targetId = a.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+
+    function buildToc() {
+      const mdRendered = document.getElementById('md-rendered');
+      const tocList = document.getElementById('toc-list');
+      if (!mdRendered || !tocList) return;
+      const headings = mdRendered.querySelectorAll('h2, h3');
+      tocList.innerHTML = '';
+      headings.forEach(h => {
+        if (!h.id) h.id = 'heading-' + Math.random().toString(36).substr(2, 8);
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        a.className = 'block py-1 px-2 rounded hover:bg-slate-100 text-slate-700 hover:text-indigo-600' + (h.tagName === 'H3' ? ' pl-4 text-xs' : '');
+        a.onclick = (e) => {
+          e.preventDefault();
+          document.getElementById(h.id).scrollIntoView({ behavior: 'smooth' });
+        };
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+    }
+
+    function toggleToc() {
+      const panel = document.getElementById('toc-panel');
+      panel.classList.toggle('hidden');
+    }
+
+    function backToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    renderMarkdown();
+    renderQuestion();
+  </script>
+</body>
+</html>
